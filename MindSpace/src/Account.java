@@ -32,4 +32,6 @@ public class Account {
         return accounts.get(email);
     }
 
+    public String getEmail() {return email;}
+    public String getPassword() {return password;}
 }
