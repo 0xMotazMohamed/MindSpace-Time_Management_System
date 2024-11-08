@@ -2,9 +2,10 @@ import java.util.HashMap;
 
 public class Data {
 
-    static HashMap<String, String> map;
+    private static HashMap<String, String> map;
 
-    {
+    public static void setMap() {
+
         Account A = new Account("Abdullah Mostafa", "abdullah@gmail.com", "Programmer1", Account.Gender.Male);
         Account M = new Account("Moataz Mohamed", "moataz@gmail.com", "Programmer2", Account.Gender.Male);
         Account W = new Account("Youssef Wahba", "youssef@gmail.com", "Programmer3", Account.Gender.Male);
@@ -16,8 +17,7 @@ public class Data {
         map.put(W.getEmail(), W.getPassword());
     }
 
-    public String getPassword(String k) {
-        return map.get(k);
+    public static HashMap<String, String> getMap() {
+        return map;
     }
-
 }
