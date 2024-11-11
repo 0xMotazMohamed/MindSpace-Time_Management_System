@@ -1,3 +1,5 @@
+package StartUp;
+
 import java.util.HashMap;
 
 public class Account {
@@ -23,9 +25,9 @@ public class Account {
             throw new IllegalArgumentException("An account with this email already exists.");
         }
         Account account = new Account(name, email, password, gender);
-        account.name=SignUp.checkUsername(account.name);
-        account.email=SignUp.checkEmail(account.email);
-        account.password=SignUp.checkPassword(account.password);
+        account.name= SignUp.checkUsername(account.name);
+        account.email= SignUp.checkEmail(account.email);
+        account.password= SignUp.checkPassword(account.password);
         accounts.put(email, account);
     }
     public static Account getAccountByEmail(String email) {

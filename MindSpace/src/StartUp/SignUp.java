@@ -1,3 +1,5 @@
+package StartUp;
+
 public class SignUp {
     public static String checkUsername(String username) {
         if (username == null || username.trim().isEmpty()) {
@@ -52,5 +54,4 @@ public class SignUp {
 
         return password;
     }
-
 }
