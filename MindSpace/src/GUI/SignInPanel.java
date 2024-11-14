@@ -2,14 +2,15 @@ package GUI;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import StartUp.SignIn;
 
 public class SignInPanel extends JPanel {
-    public SignInPanel() {
+    public SignInPanel(MainFrame mainFrame) {
         setLayout(null);
 
-        JFrame frame = new JFrame("Time Management");
         JButton signInButton = new JButton("Sign In");
         JButton resetButton = new JButton("Reset");
         JTextField emailField = new JTextField();
@@ -18,47 +19,42 @@ public class SignInPanel extends JPanel {
         JLabel passwordLabel = new JLabel("Password:");
         JLabel titleLabel = new JLabel("Sign In");
         JLabel errorLabel = new JLabel("");
+        JLabel signUpLabel = new JLabel("<html><u>Don't have email yet? Create new one.</u></html>");
 
         Font titleFont = new Font(null, Font.BOLD, 48);
         Font textFont = new Font(null, Font.PLAIN, 24);
         Font inputFont = new Font(null, Font.PLAIN, 16);
         Font errorFont = new Font(null, Font.BOLD, 12);
+        Font linkFont = new Font(null, Font.PLAIN, 12);
+
         Dimension labelSize;
         int x;
-        int y;
 
         titleLabel.setFont(titleFont);
         labelSize = titleLabel.getPreferredSize();
-        x = (720 - labelSize.width) / 2;
-        y = (720 - labelSize.height) / 2;
-        titleLabel.setBounds(x, y - 200, labelSize.width, labelSize.height);
-
-        errorLabel.setFont(new Font(null, Font.BOLD, 16));
+        titleLabel.setBounds(360 - (labelSize.width/2), 150, labelSize.width, labelSize.height);
 
         passwordLabel.setFont(textFont);
         labelSize = passwordLabel.getPreferredSize();
-        x = (720 - labelSize.width) / 2;
-        y = (720 - labelSize.height) / 2;
-        passwordLabel.setBounds(x - 140, y - 30, labelSize.width, labelSize.height);
+        x = 360 - ((labelSize.width + 20 + 220) / 2);
+        passwordLabel.setBounds(x , 320, labelSize.width, labelSize.height);
 
         emailLabel.setFont(textFont);
         labelSize = emailLabel.getPreferredSize();
-        emailLabel.setBounds(x - 140, y - 100, labelSize.width, labelSize.height);
+        emailLabel.setBounds(x, 250, labelSize.width, labelSize.height);
+
+        passwordField.setFont(inputFont);
+        passwordField.setBounds(x + (passwordLabel.getWidth() + 20), 322, 220, 32);
 
         emailField.setFont(inputFont);
-        emailField.setBounds(x - 10, y - 98, 220, 32);
-        passwordField.setFont(inputFont);
-        passwordField.setBounds(x - 10, y - 28, 220, 32);
+        emailField.setBounds(passwordField.getX(), 252, 220, 32);
 
         errorLabel.setFont(errorFont);
-        errorLabel.setBounds(x - 8, y, 300, 50);
+        errorLabel.setBounds(passwordField.getX(), 270, 220, 50);
         errorLabel.setForeground(Color.red);
 
         signInButton.setFont(inputFont);
-        labelSize = signInButton.getSize();
-        x = (720 - labelSize.width) / 2;
-        y = (720 - labelSize.height) / 2;
-        signInButton.setBounds(x - 150, y + 30, 100, 30);
+        signInButton.setBounds(240, 390, 100, 30);
         signInButton.setFocusable(false);
         signInButton.addActionListener(e -> {
             if (e.getSource() == signInButton) {
@@ -67,20 +63,20 @@ public class SignInPanel extends JPanel {
 
                 switch (SignIn.logIn(Email, Password)) {
                     case 10:
-                        errorLabel.setText("* Email must not be Empty");
                         errorLabel.setLocation(errorLabel.getX(), 270);
+                        errorLabel.setText("* Email must not be Empty");
                         break;
                     case 20:
                         errorLabel.setText("* Password must not be Empty");
                         errorLabel.setLocation(errorLabel.getX(), 340);
                         break;
                     case 9:
-                        errorLabel.setText("* Wrong Email");
                         errorLabel.setLocation(errorLabel.getX(), 270);
+                        errorLabel.setText("* Wrong Email");
                         break;
                     case 19:
-                        errorLabel.setText("* Wrong Password");
                         errorLabel.setLocation(errorLabel.getX(), 340);
+                        errorLabel.setText("* Wrong Password");
                         break;
                     default:
                         errorLabel.setText("");
@@ -91,14 +87,30 @@ public class SignInPanel extends JPanel {
 
 
         resetButton.setFont(inputFont);
-        resetButton.setBounds(x, y + 30, 100, 30);
+        resetButton.setBounds(380, 390, 100, 30);
         resetButton.setFocusable(false);
         resetButton.addActionListener(e -> {
             if (e.getSource() == resetButton) {
                 emailField.setText("");
                 passwordField.setText("");
+                errorLabel.setText("");
             }
         });
+
+        signUpLabel.setFont(linkFont);
+        signUpLabel.setForeground(new Color(0,107,255));
+        signUpLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        signUpLabel.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                mainFrame.showPage("SignUpPage");
+                emailField.setText("");
+                passwordField.setText("");
+                errorLabel.setText("");
+            }
+        });
+        labelSize = signUpLabel.getPreferredSize();
+        signUpLabel.setBounds(360 - (labelSize.width/ 2) , 430, labelSize.width, labelSize.height);
 
         add(emailLabel);
         add(passwordLabel);
@@ -108,8 +120,6 @@ public class SignInPanel extends JPanel {
         add(signInButton);
         add(resetButton);
         add(errorLabel);
-
-        frame.setFocusable(true);
-        frame.requestFocusInWindow();
+        add(signUpLabel);
     }
 }

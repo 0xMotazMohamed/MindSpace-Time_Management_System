@@ -9,15 +9,15 @@ public class MainFrame extends JFrame {
 
     public MainFrame() {
         setTitle("Time Management");
-        setSize(720,720);
+        setSize(736, 759);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         cardLayout = new CardLayout();
         mainPanel = new JPanel(cardLayout);
 
         mainPanel.add(new WelcomePanel(this), "WelcomePage");
-        mainPanel.add(new SignInPanel(), "SignInPage");
-        mainPanel.add(new SignUpPanel(), "SignUpPage");
+        mainPanel.add(new SignInPanel(this), "SignInPage");
+        mainPanel.add(new SignUpPanel(this), "SignUpPage");
 
         add(mainPanel);
         setResizable(false);

@@ -36,6 +36,7 @@ public class SignUp {
 
         return email;
     }
+
     public static String checkPassword(String password) {
         if (password == null || password.isEmpty()) {
             throw new IllegalArgumentException("Password cannot be null or empty.");
