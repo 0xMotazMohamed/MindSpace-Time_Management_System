@@ -1,16 +1,16 @@
-package GUI;
+package timemanager.gui;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import StartUp.SignIn;
+import timemanager.business.bao.*;
 
 public class SignInPanel extends JPanel {
+    SignIn SI = new BaoFactory().getSignIn();
     public SignInPanel(MainFrame mainFrame) {
         setLayout(null);
-
         JButton signInButton = new JButton("Sign In");
         JButton resetButton = new JButton("Reset");
         JTextField emailField = new JTextField();
@@ -61,7 +61,7 @@ public class SignInPanel extends JPanel {
                 String Email = emailField.getText().toLowerCase();
                 String Password = String.valueOf(passwordField.getPassword());
 
-                switch (SignIn.logIn(Email, Password)) {
+                switch (SI.logIn(Email, Password)) {
                     case 10:
                         errorLabel.setLocation(errorLabel.getX(), 270);
                         errorLabel.setText("* Email must not be Empty");
@@ -80,7 +80,7 @@ public class SignInPanel extends JPanel {
                         break;
                     default:
                         errorLabel.setText("");
-                        System.out.println("Well Done");
+                        mainFrame.showPage("MainPage");
                 }
             }
         });

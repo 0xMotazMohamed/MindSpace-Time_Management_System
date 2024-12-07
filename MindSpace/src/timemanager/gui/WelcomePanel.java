@@ -1,4 +1,4 @@
-package GUI;
+package timemanager.gui;
 
 import javax.swing.*;
 import java.awt.*;

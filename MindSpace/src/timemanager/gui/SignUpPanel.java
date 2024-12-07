@@ -1,14 +1,16 @@
-package GUI;
+package timemanager.gui;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import StartUp.SignIn;
+import timemanager.business.bao.BaoFactory;
+import timemanager.business.bao.SignUp;
 
 public class SignUpPanel extends JPanel {
     public SignUpPanel(MainFrame mainFrame) {
+        SignUp SU = new BaoFactory().getSignUp();
         setLayout(null);
 
         JButton signUpButton = new JButton("Sign Up");
@@ -21,6 +23,7 @@ public class SignUpPanel extends JPanel {
         JLabel passwordLabel = new JLabel("Password:");
         JLabel titleLabel = new JLabel("Sign Up");
         JLabel errorLabel = new JLabel("");
+        JLabel errorLabel2 = new JLabel("");
         JLabel signInLabel = new JLabel("<html><u>Have email Already? SignIn.</u></html>");
 
         Font titleFont = new Font(null, Font.BOLD, 48);
@@ -60,12 +63,14 @@ public class SignUpPanel extends JPanel {
         usernameField.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                usernameField.setFont(inputFont);
-                usernameField.setText("");
-                usernameField.setBackground(Color.white);
-                usernameField.setForeground(null);
-                usernameField.setFocusable(true);
-                usernameField.grabFocus();
+                if (usernameField.getForeground().equals(Color.GRAY)) {
+                    usernameField.setFont(inputFont);
+                    usernameField.setText("");
+                    usernameField.setBackground(Color.white);
+                    usernameField.setForeground(null);
+                    usernameField.setFocusable(true);
+                    usernameField.grabFocus();
+                }
                 if (emailField.getText().isEmpty()) {
                     emailField.setFont(instructorFont);
                     emailField.setBackground(Color.LIGHT_GRAY);
@@ -92,12 +97,14 @@ public class SignUpPanel extends JPanel {
         emailField.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                emailField.setFont(inputFont);
-                emailField.setText("");
-                emailField.setBackground(Color.white);
-                emailField.setForeground(null);
-                emailField.setFocusable(true);
-                emailField.grabFocus();
+                if (emailField.getForeground().equals(Color.GRAY)) {
+                    emailField.setFont(inputFont);
+                    emailField.setText("");
+                    emailField.setBackground(Color.white);
+                    emailField.setForeground(null);
+                    emailField.setFocusable(true);
+                    emailField.grabFocus();
+                }
                 if (usernameField.getText().isEmpty()) {
                     usernameField.setFont(instructorFont);
                     usernameField.setBackground(Color.LIGHT_GRAY);
@@ -125,12 +132,14 @@ public class SignUpPanel extends JPanel {
         passwordField.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                passwordField.setFont(inputFont);
-                passwordField.setText("");
-                passwordField.setBackground(Color.white);
-                passwordField.setForeground(null);
-                passwordField.setFocusable(true);
-                passwordField.grabFocus();
+                if (passwordField.getForeground().equals(Color.GRAY)) {
+                    passwordField.setFont(inputFont);
+                    passwordField.setText("");
+                    passwordField.setBackground(Color.white);
+                    passwordField.setForeground(null);
+                    passwordField.setFocusable(true);
+                    passwordField.grabFocus();
+                }
                 if (usernameField.getText().isEmpty()) {
                     usernameField.setFont(instructorFont);
                     usernameField.setBackground(Color.LIGHT_GRAY);
@@ -149,44 +158,66 @@ public class SignUpPanel extends JPanel {
         });
 
         errorLabel.setFont(errorFont);
-        errorLabel.setBounds(usernameField.getX(), 220, 300, 50);
+        errorLabel.setBounds(usernameField.getX(), 220, 400, 50);
         errorLabel.setForeground(Color.red);
 
+        errorLabel2.setFont(errorFont);
+        errorLabel2.setBounds(usernameField.getX(), 220, 400, 50);
+        errorLabel2.setForeground(Color.red);
+        
         signUpButton.setFont(inputFont);
         signUpButton.setBounds(240, 410, 100, 30);
         signUpButton.setFocusable(false);
         signUpButton.addActionListener(e -> {
             if (e.getSource() == signUpButton) {
-                String Email = emailField.getText().toLowerCase();
-                String Password = String.valueOf(passwordField.getPassword());
+                String Username = "";
+                String Email = "";
+                String Password = "";
+                if (!usernameField.getForeground().equals(Color.GRAY))
+                    Username = usernameField.getText();
+                if (!emailField.getForeground().equals(Color.GRAY))
+                    Email = emailField.getText().toLowerCase();
+                if (!passwordField.getForeground().equals(Color.GRAY))
+                    Password = String.valueOf(passwordField.getPassword());
 
-                switch (SignIn.logIn(Email, Password)) {
+                switch (SU.SignUp(Username ,Email, Password)) {
                     case 10:
-                        errorLabel.setLocation(errorLabel.getX(), 290);
+                        errorLabel.setLocation(errorLabel.getX(), 220);
                         errorLabel.setText("* Username must not be Empty");
+                        errorLabel2.setText("");
                         break;
                     case 20:
-                        errorLabel.setLocation(errorLabel.getX(), 360);
+                        errorLabel.setLocation(errorLabel.getX(), 290);
                         errorLabel.setText("* Email must not be Empty");
+                        errorLabel2.setText("");
                         break;
                     case 30:
-                        errorLabel.setLocation(errorLabel.getX(), 220);
+                        errorLabel.setLocation(errorLabel.getX(), 360);
                         errorLabel.setText("* Password must not be Empty");
+                        errorLabel2.setText("");
                         break;
                     case 9:
-                        errorLabel.setLocation(errorLabel.getX(), 290);
-                        errorLabel.setText("* Wrong Username");
+                        errorLabel.setLocation(errorLabel.getX(), 220);
+                        errorLabel.setText("* Username can only contain alphanumeric characters.");
+                        errorLabel2.setLocation(errorLabel.getX() + 8, 235);
+                        errorLabel2.setText("Username must be between 5 and 15 characters long.");
                         break;
                     case 19:
-                        errorLabel.setLocation(errorLabel.getX(), 360);
-                        errorLabel.setText("* Wrong Email");
+                        errorLabel.setLocation(errorLabel.getX(), 290);
+                        errorLabel.setText("* Email must contain '@'.");
+                        errorLabel2.setLocation(errorLabel.getX() + 8, 305);
+                        errorLabel2.setText("Email must end with '.com'.");
                         break;
                     case 29:
-                        errorLabel.setLocation(errorLabel.getX(), 220);
-                        errorLabel.setText("* Wrong Password");
+                        errorLabel.setLocation(errorLabel.getX(), 360);
+                        errorLabel.setText("* Password must be at least 8 characters long.");
+                        errorLabel2.setLocation(errorLabel.getX() + 8, 375);
+                        errorLabel2.setText("Password must contain at least one uppercase letter and one digit.");
+                        break;
                     default:
                         errorLabel.setText("");
-                        System.out.println("Well Done");
+                        errorLabel2.setText("");
+                        mainFrame.showPage("MainPage");
                 }
             }
         });
@@ -213,6 +244,7 @@ public class SignUpPanel extends JPanel {
                 passwordField.setForeground(Color.GRAY);
                 passwordField.setFocusable(false);
                 errorLabel.setText("");
+                errorLabel2.setText("");
             }
         });
 
@@ -239,6 +271,7 @@ public class SignUpPanel extends JPanel {
                 passwordField.setForeground(Color.GRAY);
                 passwordField.setFocusable(false);
                 errorLabel.setText("");
+                errorLabel2.setText("");
             }
         });
         labelSize = signInLabel.getPreferredSize();
@@ -254,6 +287,7 @@ public class SignUpPanel extends JPanel {
         add(resetButton);
         add(signUpButton);
         add(errorLabel);
+        add(errorLabel2);
         add(signInLabel);
     }
 }
