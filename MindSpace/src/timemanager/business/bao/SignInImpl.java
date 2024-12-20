@@ -5,7 +5,11 @@ import timemanager.data.dto.Account;
 import timemanager.data.dao.DAOFactory;
 
 public class SignInImpl implements SignIn {
-    private Data data = new DAOFactory().data();
+    private Data data;
+
+    public SignInImpl(DAOFactory daoFactory) {
+        this.data = daoFactory.getData();
+    }
 
     // Check if the email exists in the "database"
     public byte checkEmail(String email) {

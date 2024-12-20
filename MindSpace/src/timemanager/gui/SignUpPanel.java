@@ -5,12 +5,13 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import timemanager.business.bao.BaoFactory;
+import timemanager.business.bao.BAOFactory;
 import timemanager.business.bao.SignUp;
+import timemanager.data.dto.Account;
 
 public class SignUpPanel extends JPanel {
-    public SignUpPanel(MainFrame mainFrame) {
-        SignUp SU = new BaoFactory().getSignUp();
+    public SignUpPanel(MainFrame mainFrame, BAOFactory baoFactory) {
+        SignUp SU = baoFactory.getSignUp();
         setLayout(null);
 
         JButton signUpButton = new JButton("Sign Up");
@@ -217,6 +218,7 @@ public class SignUpPanel extends JPanel {
                     default:
                         errorLabel.setText("");
                         errorLabel2.setText("");
+                        mainFrame.setAccount(baoFactory.getDaoFactory().getData().getAccountByEmail(Email));
                         mainFrame.showPage("MainPage");
                 }
             }
@@ -276,6 +278,14 @@ public class SignUpPanel extends JPanel {
         });
         labelSize = signInLabel.getPreferredSize();
         signInLabel.setBounds(360 - (labelSize.width /2), 450, labelSize.width, labelSize.height);
+
+        JButton toggleButton = new JButton("Switch to Dark Mode");
+        toggleButton.setBounds(275, 600, 150,20);
+        toggleButton.addActionListener(e -> {
+            ThemeManager.toggleTheme(mainFrame);
+            toggleButton.setText(ThemeManager.isDarkMode() ? "Switch to Light Mode" : "Switch to Dark Mode");
+        });
+        add(toggleButton);
 
         add(usernameLabel);
         add(emailLabel);

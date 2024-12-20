@@ -1,4 +1,7 @@
 package timemanager.data.dto;
+import timemanager.data.dto.features.Task;
+import timemanager.data.dto.flyweight.StatusType;
+
 import java.util.HashSet;
 public class Project {
     private String name;
@@ -47,7 +50,18 @@ public class Project {
         else{
             throw new IllegalArgumentException("Please entre a valid task");
         }
-    }    public void addTask(Task task ,HashSet<Task> source){
+    }
+    public HashSet<Task> getTasksByStatus(StatusType statusType) {
+        if (statusType == StatusType.COMPLETED)
+            return completedTasks;
+        else if (statusType == StatusType.INPROGRESS)
+            return inProgressTasks;
+        else
+            return toDoTasks;
+    }
+    public void addTask(Task task ,HashSet<Task> source){
+        if (source == null)
+            source = toDoTasks;
         if (task != null) {
             source.add(task);          // Add the task to the source set
         }

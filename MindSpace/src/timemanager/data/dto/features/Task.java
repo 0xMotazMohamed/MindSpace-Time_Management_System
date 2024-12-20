@@ -1,4 +1,8 @@
-package timemanager.data.dto;
+package timemanager.data.dto.features;
+
+import timemanager.data.dto.flyweight.FlyweightFactory;
+import timemanager.data.dto.flyweight.Priority;
+import timemanager.data.dto.flyweight.Status;
 
 public class Task {
     private String title;

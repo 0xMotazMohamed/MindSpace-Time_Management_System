@@ -41,6 +41,14 @@ public class WelcomePanel extends JPanel {
         signUpButton.setFocusable(false);
         signUpButton.addActionListener(e -> mainFrame.showPage("SignUpPage"));
 
+        JButton toggleButton = new JButton("Switch to Dark Mode");
+        toggleButton.setBounds(275, 600, 150,20);
+        toggleButton.addActionListener(e -> {
+            ThemeManager.toggleTheme(mainFrame);
+            toggleButton.setText(ThemeManager.isDarkMode() ? "Switch to Light Mode" : "Switch to Dark Mode");
+        });
+        add(toggleButton);
+
         add(titleLabel);
         add(titleLabel1);
         add(messageLabel);

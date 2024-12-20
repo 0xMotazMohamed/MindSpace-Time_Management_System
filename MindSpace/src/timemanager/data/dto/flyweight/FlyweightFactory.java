@@ -1,4 +1,4 @@
-package timemanager.data.dto;
+package timemanager.data.dto.flyweight;
 
 import java.util.HashMap;
 import java.util.Map;

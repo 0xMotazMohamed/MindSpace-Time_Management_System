@@ -1,4 +1,4 @@
-package timemanager.data.dto;
+package timemanager.data.dto.flyweight;
 
 public class Status {
     StatusType statusType;

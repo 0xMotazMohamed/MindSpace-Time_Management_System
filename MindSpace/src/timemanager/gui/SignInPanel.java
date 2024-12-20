@@ -8,9 +8,10 @@ import java.awt.event.MouseEvent;
 import timemanager.business.bao.*;
 
 public class SignInPanel extends JPanel {
-    SignIn SI = new BaoFactory().getSignIn();
-    public SignInPanel(MainFrame mainFrame) {
+    public SignInPanel(MainFrame mainFrame, BAOFactory baoFactory) {
+        SignIn SI = baoFactory.getSignIn();
         setLayout(null);
+
         JButton signInButton = new JButton("Sign In");
         JButton resetButton = new JButton("Reset");
         JTextField emailField = new JTextField();
@@ -80,6 +81,7 @@ public class SignInPanel extends JPanel {
                         break;
                     default:
                         errorLabel.setText("");
+                        mainFrame.setAccount(baoFactory.getDaoFactory().getData().getAccountByEmail(Email));
                         mainFrame.showPage("MainPage");
                 }
             }
@@ -111,6 +113,22 @@ public class SignInPanel extends JPanel {
         });
         labelSize = signUpLabel.getPreferredSize();
         signUpLabel.setBounds(360 - (labelSize.width/ 2) , 430, labelSize.width, labelSize.height);
+
+        JButton toggleButton = new JButton("Switch to Dark Mode");
+        toggleButton.setBounds(275, 600, 150,20);
+        toggleButton.addActionListener(e -> {
+            ThemeManager.toggleTheme(mainFrame);
+            toggleButton.setText(ThemeManager.isDarkMode() ? "Switch to Light Mode" : "Switch to Dark Mode");
+        });
+        add(toggleButton);
+
+        JButton t = new JButton("login ^_^");
+        t.setBounds(275,650,150,20);
+        t.addActionListener(e -> {
+            mainFrame.setAccount(baoFactory.getDaoFactory().getData().getAccountByEmail("abdullah@gmail.com"));
+            mainFrame.showPage("MainPage");
+        });
+        add(t);
 
         add(emailLabel);
         add(passwordLabel);

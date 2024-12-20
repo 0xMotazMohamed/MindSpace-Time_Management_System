@@ -1,6 +1,16 @@
 package timemanager.business.bao;
 
+import timemanager.data.dao.DAOFactory;
+import timemanager.data.dao.Data;
+import timemanager.data.dto.Account;
+
 public class SignUpImpl implements SignUp {
+    private Data data;
+    
+    public SignUpImpl(DAOFactory daoFactory) {
+        this.data = daoFactory.getData();
+    }
+
     public byte checkUsername(String username) {
         if (username == null || username.trim().isEmpty()) {
             return 0; // Username field is Empty
@@ -67,6 +77,8 @@ public class SignUpImpl implements SignUp {
         if (emailCheck == -1) return 19;  // Email incorrect
         if (passwordCheck == 0) return 30;  // Password field is empty
         if (passwordCheck == -1) return 29;  // Password incorrect
+
+        data.addAccount(new Account(username, email, password));
 
         return  0; //Successful Sign In
     }

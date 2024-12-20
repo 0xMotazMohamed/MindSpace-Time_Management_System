@@ -1,11 +1,13 @@
 package timemanager.data.dao;
 
 public class DAOFactory {
-    public DataImpl data() {
-        return new DataImpl();
+    private Data data;
+
+    public DAOFactory() {
+        this.data = new DataImpl();
     }
 
-
-
-
+    public Data getData() {
+        return  this.data;
+    }
 }

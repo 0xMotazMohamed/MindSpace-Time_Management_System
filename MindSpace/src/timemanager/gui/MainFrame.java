@@ -1,5 +1,9 @@
 package timemanager.gui;
 
+import timemanager.business.bao.BAOFactory;
+import timemanager.data.dao.DAOFactory;
+import timemanager.data.dto.Account;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -7,6 +11,9 @@ public class MainFrame extends JFrame {
     private CardLayout cardLayout;
     private JPanel mainPanel;
 
+    DAOFactory daoFactory = new DAOFactory();
+    BAOFactory baoFactory = new BAOFactory(daoFactory);
+    private Account account;
 
     public MainFrame() {
         setTitle("Time Management");
@@ -19,14 +26,18 @@ public class MainFrame extends JFrame {
         cardLayout = new CardLayout();
         mainPanel = new JPanel(cardLayout);
 
-        mainPanel.add(new AppPanelabdo(this), "MainPage");
         mainPanel.add(new WelcomePanel(this), "WelcomePage");
-        mainPanel.add(new SignInPanel(this), "SignInPage");
-        mainPanel.add(new SignUpPanel(this), "SignUpPage");
+        mainPanel.add(new SignInPanel(this, baoFactory), "SignInPage");
+        mainPanel.add(new SignUpPanel(this, baoFactory), "SignUpPage");
 
         add(mainPanel);
         setResizable(false);
         setVisible(true);
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
+        mainPanel.add(new AppPanel(this, baoFactory, account), "MainPage");
     }
 
     public void showPage(String pageName) {
