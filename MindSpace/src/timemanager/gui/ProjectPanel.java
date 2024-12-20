@@ -17,7 +17,7 @@ public class ProjectPanel extends JPanel {
     private Color InProgrssBG = new Color(236,232,82);
     private Color ToDoBG = new Color(251,65,65);
     private Color taskBG = new Color(174, 174, 174);//174
-    Color blackL = new Color(70,70,70);
+    private Color pressedtaskBG = new Color(123, 123, 123);//174
 
     Font titleFont = new Font(null, Font.BOLD, 24);
     Font textFont = new Font(null, Font.PLAIN, 12);
@@ -25,18 +25,25 @@ public class ProjectPanel extends JPanel {
 
     Project p;
 
+    JLabel projectName;
+    JTextArea projectDes;
+    JLabel completedLabel;
+    JLabel inProgressLabel;
+    JLabel toDoLabel;
+
     public ProjectPanel(Project p) {
         setLayout(null);
+        this.p = p;
 
         Dimension labelSize;
 
-        JLabel projectName = new JLabel(p.getName(), SwingConstants.CENTER);
+        projectName = new JLabel(p.getName(), SwingConstants.CENTER);
         projectName.setFont(titleFont);
         labelSize = projectName.getPreferredSize();
         projectName.setBounds(10,0,labelSize.width, labelSize.height);
         add(projectName);
 
-        JTextArea projectDes = new JTextArea(3,50);
+        projectDes = new JTextArea(3,50);
         projectDes.setLineWrap(true);
         projectDes.setText(p.getDescription());
         projectDes.setBounds(10,30,260,50);
@@ -45,30 +52,32 @@ public class ProjectPanel extends JPanel {
         projectDes.setEditable(false);
         projectDes.setFocusable(false);
 
-        JLabel completedLabel = new JLabel("Completed", SwingConstants.CENTER);
+        completedLabel = new JLabel("Completed", SwingConstants.CENTER);
         completedLabel.setFont(subTitleFont);
         completedLabel.setBounds(10,90,80,30);
-        JLabel inProgressLabel = new JLabel("InProgress", SwingConstants.CENTER);
+        inProgressLabel = new JLabel("InProgress", SwingConstants.CENTER);
         inProgressLabel.setFont(subTitleFont);
         inProgressLabel.setBounds(100,90,80,30);
-        JLabel toDoLabel = new JLabel("ToDo", SwingConstants.CENTER);
-        toDoLabel.setBounds(190,90,80,30);
+        toDoLabel = new JLabel("ToDo", SwingConstants.CENTER);
         toDoLabel.setFont(subTitleFont);
+        toDoLabel.setBounds(190,90,80,30);
 
-        int taskN = 0;
-        for (Task task : p.getToDoTasks()) {
-            taskN ++;
-            paintTask(task, taskN, 195);
-        }
-        taskN = 0;
-        for (Task task : p.getInProgressTasks()) {
-            taskN ++;
-            paintTask(task, taskN, 105);
-        }
-        taskN = 0;
-        for (Task task : p.getCompletedTasks()) {
-            taskN ++;
-            paintTask(task, taskN, 15);
+        paintTasks:{
+            int taskN = 0;
+            for (Task task : p.getToDoTasks()) {
+                taskN++;
+                paintTask(task, taskN, 195);
+            }
+            taskN = 0;
+            for (Task task : p.getInProgressTasks()) {
+                taskN++;
+                paintTask(task, taskN, 105);
+            }
+            taskN = 0;
+            for (Task task : p.getCompletedTasks()) {
+                taskN++;
+                paintTask(task, taskN, 15);
+            }
         }
 
         add(projectDes);
@@ -81,53 +90,96 @@ public class ProjectPanel extends JPanel {
         JLabel taskName = new JLabel(task.getTitle(), SwingConstants.CENTER);
         taskName.setOpaque(true);
         taskName.setFont(textFont);
-        taskName.setBounds(195,(95  + (n * 30)),70,25);
+        taskName.setBounds(x,(95  + (n * 30)),70,25);
         taskName.setBackground(taskBG);
 
+        final Point[] initialClick = new Point[1];
+
         taskName.addMouseListener(new MouseAdapter() {
-            int xOffset, yOffset;
             @Override
             public void mousePressed(MouseEvent e) {
-                xOffset = e.getX();
-                yOffset = e.getY();
+                initialClick[0] = e.getPoint();
+                taskName.setBackground(pressedtaskBG);
             }
 
             @Override
             public void mouseReleased(MouseEvent e) {
+                int finalX = taskName.getX() + 40;
+                int finalY = taskName.getY() + 15;
+                taskName.setBackground(taskBG);
                 StatusType statusType = task.getStatus().getStatus();
-                if (e.getX() >= 10 && e.getX() <= 90 && e.getY() >= 90 && e.getY() <= 290) {
+
+                if (finalX >= 10 && finalX <= 90 && finalY >= 90 && finalY <= 290) {
                     if (!statusType.equals(StatusType.COMPLETED)) {
                         p.transferTask(task, p.getTasksByStatus(statusType), p.getCompletedTasks());
-                        task.setStatus(new Status("Completed"));
-                        revalidate();
-                        repaint();
+                        remove(taskName);
+                        updateTasksDisplay();
+                    } else {
+                        remove(taskName);
+                        updateTasksDisplay();
                     }
-                } else if (e.getX() >= 100 && e.getX() <= 180 && e.getY() >= 90 && e.getY() <= 290) {
+                } else if (finalX >= 100 && finalX <= 180 && finalY >= 90 && finalY <= 290) {
                     if (!statusType.equals(StatusType.INPROGRESS)) {
                         p.transferTask(task, p.getTasksByStatus(statusType), p.getInProgressTasks());
-                        task.setStatus(new Status("InProgress"));
-                        revalidate();
-                        repaint();
+                        remove(taskName);
+                        updateTasksDisplay();
+                    } else {
+                        remove(taskName);
+                        updateTasksDisplay();
                     }
-                } else if (e.getX() >= 190 && e.getX() <= 270 && e.getY() >= 90 && e.getY() <= 290) {
+                } else if (finalX >= 190 && finalX <= 270 && finalY >= 90 && finalY <= 290) {
                     if (!statusType.equals(StatusType.TODO)) {
                         p.transferTask(task, p.getTasksByStatus(statusType), p.getToDoTasks());
-                        task.setStatus(new Status("ToDo"));
-                        revalidate();
-                        repaint();
+                        remove(taskName);
+                        updateTasksDisplay();
+                    } else {
+                        remove(taskName);
+                        updateTasksDisplay();
                     }
+                } else {
+                    remove(taskName);
+                    updateTasksDisplay();
                 }
-            }
-
-            @Override
-            public void mouseDragged(MouseEvent e) {
-                int newX = e.getXOnScreen() - xOffset - getLocationOnScreen().x;
-                int newY = e.getYOnScreen() - yOffset - getLocationOnScreen().y;
-                taskName.setLocation(newX, newY);
             }
         });
 
+        taskName.addMouseMotionListener(new MouseAdapter() {
+            @Override
+            public void mouseDragged(MouseEvent e) {
+                int deltaX = e.getX() - initialClick[0].x;
+                int deltaY = e.getY() - initialClick[0].y;
+
+                taskName.setLocation(taskName.getX() + deltaX, taskName.getY() + deltaY);
+            }
+        });
         add(taskName);
+        revalidate();
+        repaint();
+    }
+
+    public void updateTasksDisplay() {
+        removeAll();
+        repaint();
+        add(projectName);
+        add(projectDes);
+        add(completedLabel);
+        add(inProgressLabel);
+        add(toDoLabel);
+        int taskN = 0;
+        for (Task task : p.getToDoTasks()) {
+            taskN++;
+            paintTask(task, taskN, 195);
+        }
+        taskN = 0;
+        for (Task task : p.getInProgressTasks()) {
+            taskN++;
+            paintTask(task, taskN, 105);
+        }
+        taskN = 0;
+        for (Task task : p.getCompletedTasks()) {
+            taskN++;
+            paintTask(task, taskN, 15);
+        }
     }
 
     public void paintComponent(Graphics g) {

@@ -1,5 +1,6 @@
 package timemanager.data.dto;
 import timemanager.data.dto.features.Task;
+import timemanager.data.dto.flyweight.Status;
 import timemanager.data.dto.flyweight.StatusType;
 
 import java.util.HashSet;
