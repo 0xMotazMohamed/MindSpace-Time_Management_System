@@ -209,6 +209,10 @@ public class SignUpPanel extends JPanel {
                         errorLabel2.setLocation(errorLabel.getX() + 8, 305);
                         errorLabel2.setText("Email must end with '.com'.");
                         break;
+                    case 18:
+                        errorLabel.setLocation(errorLabel.getX(), 290);
+                        errorLabel.setText("* Email is already in use. Please try a different one.");
+                        break;
                     case 29:
                         errorLabel.setLocation(errorLabel.getX(), 360);
                         errorLabel.setText("* Password must be at least 8 characters long.");

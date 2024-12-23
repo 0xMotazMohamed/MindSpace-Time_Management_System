@@ -1,5 +1,7 @@
 package timemanager.gui;
 
+import timemanager.gui.Shapes.Rectangle;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -41,7 +43,7 @@ public class WelcomePanel extends JPanel {
         signUpButton.setFocusable(false);
         signUpButton.addActionListener(e -> mainFrame.showPage("SignUpPage"));
 
-        JButton toggleButton = new JButton("Switch to Dark Mode");
+        JButton toggleButton = new JButton(ThemeManager.mode());
         toggleButton.setBounds(275, 600, 150,20);
         toggleButton.addActionListener(e -> {
             ThemeManager.toggleTheme(mainFrame);

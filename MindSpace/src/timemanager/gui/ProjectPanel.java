@@ -2,7 +2,6 @@ package timemanager.gui;
 
 import timemanager.data.dto.Project;
 import timemanager.data.dto.features.Task;
-import timemanager.data.dto.flyweight.Status;
 import timemanager.data.dto.flyweight.StatusType;
 
 import javax.swing.*;
@@ -31,11 +30,11 @@ public class ProjectPanel extends JPanel {
     JLabel inProgressLabel;
     JLabel toDoLabel;
 
+    Dimension labelSize;
+
     public ProjectPanel(Project p) {
         setLayout(null);
         this.p = p;
-
-        Dimension labelSize;
 
         projectName = new JLabel(p.getName(), SwingConstants.CENTER);
         projectName.setFont(titleFont);

@@ -7,6 +7,8 @@ import timemanager.data.dto.features.Task;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 public class AddingProject {
@@ -32,6 +34,7 @@ public class AddingProject {
 
         JLabel numTasksLabel = new JLabel("Number of Tasks:");
         JTextField numTasksField = new JTextField(5);
+        JSpinner numTasksSpinner = new JSpinner(new SpinnerNumberModel(1,1,100,1));
 
         panel.add(nameLabel);
         panel.add(nameField);
@@ -40,31 +43,28 @@ public class AddingProject {
         panel.add(scrollPane);
         panel.add(numTasksLabel);
         panel.add(numTasksField);
+        panel.add(numTasksSpinner);
 
         int ProjectOption = JOptionPane.showConfirmDialog(null, panel,
                 "Enter Project Details", JOptionPane.OK_CANCEL_OPTION,JOptionPane.PLAIN_MESSAGE);
 
         if (ProjectOption == JOptionPane.OK_OPTION) {
-            if ( nameLabel != null && isIntegerBiggerThanZero(numTasksField.getText())) {
+            if ( !nameField.getText().isEmpty()) {
                 String projectName = nameField.getText();
                 String projectDescription = desArea.getText();
-                int numTasks = Integer.parseInt(numTasksField.getText());
+                int numTasks = (Integer) numTasksSpinner.getValue();
 
-                Project project = new Project(projectName, projectDescription);
+                implementNewTasks(baoFactory, account, projectName, projectDescription, numTasks);
 
-                implementNewTasks(baoFactory, account, project, numTasks);
-
-                account.addProject(project);
-                p = project;
             } else {
-                JOptionPane.showConfirmDialog(null, "Please, Enter name for Project & valid integer in Number of Tasks.",
+                JOptionPane.showConfirmDialog(null, "Please, Enter name for Project.",
                         "Error", JOptionPane.ERROR_MESSAGE);
                 implementNewProject(baoFactory,account);
             }
         }
     }
 
-    private void implementNewTasks(BAOFactory baoFactory, Account account, Project project, int numTasks) {
+    private void implementNewTasks(BAOFactory baoFactory, Account account, String projectName, String projectDescription, int numTasks) {
         JPanel tasksPanel = new JPanel();
         tasksPanel.setLayout(new BoxLayout(tasksPanel,BoxLayout.Y_AXIS));
         ArrayList<JTextField> taskNames = new ArrayList<>();
@@ -73,6 +73,30 @@ public class AddingProject {
             JPanel taskPanel = new JPanel(new GridLayout(1,4));
             taskPanel.add(new JLabel("Task " + (i+1) + " Name:"));
             JTextField taskNameField = new JTextField(10);
+            taskNameField.setBackground(Color.LIGHT_GRAY);
+            taskNameField.setForeground(Color.GRAY);
+            final int taskId = (i + 1);
+            taskNameField.setText("Task " + taskId);
+            taskNameField.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseClicked(MouseEvent e) {
+                    if (taskNameField.getForeground().equals(Color.GRAY)) {
+                        taskNameField.setText("");
+                        taskNameField.setBackground(null);
+                        taskNameField.setForeground(null);
+                        taskNameField.grabFocus();
+                    }
+                }
+                @Override
+                public void mouseReleased(MouseEvent e) {
+                    if (taskNameField.getText().trim().equals("")) {
+                        taskNameField.setText("Task " + taskId);
+                        taskNameField.setBackground(Color.LIGHT_GRAY);
+                        taskNameField.setForeground(Color.GRAY);
+                    }
+                }
+            });
+
             taskNames.add(taskNameField);
             taskPanel.add(taskNameField);
             tasksPanel.add(taskPanel);
@@ -83,30 +107,21 @@ public class AddingProject {
 
         if (taskOption == JOptionPane.OK_OPTION) {
             if (!isAnyTaskEmpty(taskNames)) {
+                p = new Project(projectName, projectDescription);
+                account.addProject(p);
                 for (int i = 0; i < numTasks; i++) {
-                    project.addTask(new Task(taskNames.get(i).getText()), null);
+                    p.addTask(new Task(taskNames.get(i).getText()), null);
                 }
             } else {
                 JOptionPane.showConfirmDialog(null, "Please, Enter name for every task.",
                         "Error", JOptionPane.ERROR_MESSAGE);
-                implementNewTasks(baoFactory, account, project, numTasks);
+                implementNewTasks(baoFactory, account, projectName, projectDescription, numTasks);
             }
         }
     }
 
     public Project getProject() {
         return p;
-    }
-
-    private static boolean isIntegerBiggerThanZero(String s) {
-        try {
-            int n = Integer.parseInt(s);
-            if (n <= 0)
-                return false;
-            return true;
-        } catch (NumberFormatException e) {
-            return false;
-        }
     }
 
     private static boolean isAnyTaskEmpty(ArrayList<JTextField> arrayList) {

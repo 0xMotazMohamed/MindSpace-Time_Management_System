@@ -2,8 +2,7 @@ package timemanager.gui;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.event.*;
 
 import timemanager.business.bao.*;
 
@@ -114,7 +113,7 @@ public class SignInPanel extends JPanel {
         labelSize = signUpLabel.getPreferredSize();
         signUpLabel.setBounds(360 - (labelSize.width/ 2) , 430, labelSize.width, labelSize.height);
 
-        JButton toggleButton = new JButton("Switch to Dark Mode");
+        JButton toggleButton = new JButton(ThemeManager.mode());
         toggleButton.setBounds(275, 600, 150,20);
         toggleButton.addActionListener(e -> {
             ThemeManager.toggleTheme(mainFrame);

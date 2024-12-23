@@ -44,6 +44,10 @@ public class SignUpImpl implements SignUp {
             return -1; // Email must end with '.com'
         }
 
+        if (email.equals(data.getAllAccounts().get(email).getEmail())) {
+            return -2; // Email is used for another account
+        }
+
         return 1;
     }
 
@@ -75,6 +79,7 @@ public class SignUpImpl implements SignUp {
         if (usernameCheck == -1) return 9;  // Username incorrect
         if (emailCheck == 0) return 20;  // Email field is empty
         if (emailCheck == -1) return 19;  // Email incorrect
+        if (emailCheck == -2) return 18;  // Email used
         if (passwordCheck == 0) return 30;  // Password field is empty
         if (passwordCheck == -1) return 29;  // Password incorrect
 
