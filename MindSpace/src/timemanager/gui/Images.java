@@ -8,15 +8,15 @@ public class Images {
             static Image scaledHomeF = homeF.getImage().getScaledInstance(24,24, Image.SCALE_SMOOTH);
             static ImageIcon homeFIcon = new ImageIcon(scaledHomeF);
 
-            static ImageIcon homeO = new ImageIcon("MindSpace/res/icons/home_outline.png");
+            static ImageIcon homeO = new ImageIcon("MindSpace/res/icons/home_outline2.png");
             static Image scaledHomeO = homeO.getImage().getScaledInstance(24,24, Image.SCALE_SMOOTH);
             static ImageIcon homeOIcon = new ImageIcon(scaledHomeO);
 
-            static ImageIcon folderF = new ImageIcon("MindSpace/res/icons/folder_filled.png");
+            static ImageIcon folderF = new ImageIcon("MindSpace/res/icons/folder_filled2.png");
             static Image scaledFolderF = folderF.getImage().getScaledInstance(24,24, Image.SCALE_SMOOTH);
             static ImageIcon folderFIcon = new ImageIcon(scaledFolderF);
 
-            static ImageIcon folderO = new ImageIcon("MindSpace/res/icons/folder_outline.png");
+            static ImageIcon folderO = new ImageIcon("MindSpace/res/icons/folder_outline2.png");
             static Image scaledFolderO = folderO.getImage().getScaledInstance(24,24, Image.SCALE_SMOOTH);
             static ImageIcon folderOIcon = new ImageIcon(scaledFolderO);
 

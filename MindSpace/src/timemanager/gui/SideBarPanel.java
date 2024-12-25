@@ -76,8 +76,10 @@ public class SideBarPanel extends JPanel {
                         pIcon.setBackground(whiteBG);
                     }
                 }
-//                mainFrame.setProject();
-                mainFrame.showPage("ProjectPage");
+                System.out.println("home Clicked");
+                mainFrame.setSBP(SideBarPanel.this);
+                mainFrame.getAppPanel().setSBP(SideBarPanel.this);
+                mainFrame.showPage("MainPage");
                 mainPanel = 0;
                 System.out.println(mainPanel);
             }
@@ -87,7 +89,7 @@ public class SideBarPanel extends JPanel {
             int projectN = 0;
             for (Project project : account.getProjects()) {
                 projectN++;
-                paintProject(projectN);
+                paintProject(mainFrame ,project , projectN);
             }
             revalidate();
             repaint();
@@ -95,23 +97,39 @@ public class SideBarPanel extends JPanel {
         add(home);
     }
 
-    public void paintProject(int n) {
+    public void paintProject(MainFrame mainFrame , Project p, int n) {
         JLabel projectIcon = new JLabel(fO);
         projectIcons.add(projectIcon);
         projectIcon.setOpaque(true);
-        projectIcon.setBounds(13, 13 + (49*n), 36, 36); //y=62,111,160,109
+        projectIcon.setBounds(13, 13 + (49 * n), 36, 36); //y=62,111,160,109
         add(projectIcon);
 
+        for (JLabel pIcon : projectIcons) {
+            if (pIcon.equals(projectIcon) && mainPanel == projectIcons.indexOf(pIcon)) {
+                if (ThemeManager.isDarkMode()) {
+                    projectIcon.setBackground(bIconBG);
+                } else {
+                    projectIcon.setBackground(wIconBG);
+                }
+            }
+        }
         projectIcon.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
+                projectIcon.setIcon(fF);
+                if (ThemeManager.isDarkMode()) {
+                    projectIcon.setBackground(bIconBG);
+                } else {
+                    projectIcon.setBackground(wIconBG);
+                }
                 home.setIcon(hO);
                 if (ThemeManager.isDarkMode()) {
                     home.setBackground(blackBG);
                 } else {
                     home.setBackground(whiteBG);
                 }
-                projectIcon.setIcon(fF);
+                mainFrame.setProject(p);
+                mainFrame.showPage("ProjectPage");
                 for (JLabel pIcon : projectIcons) {
                     if (!pIcon.equals(projectIcon)) {
                         pIcon.setIcon(fO);
@@ -121,25 +139,18 @@ public class SideBarPanel extends JPanel {
                             pIcon.setBackground(whiteBG);
                         }
                     } else {
-                        pIcon.setIcon(fF);
-                        if (ThemeManager.isDarkMode()) {
-                            pIcon.setBackground(bIconBG);
-                        } else {
-                            pIcon.setBackground(wIconBG);
-                        }
-                        mainPanel = (byte) (projectIcons.indexOf(pIcon) + 1);
-                        System.out.println(mainPanel);
+                        mainPanel = (byte) projectIcons.indexOf(pIcon);
                     }
                 }
             }
 
             @Override
             public void mouseEntered(MouseEvent e) {
-                        if (ThemeManager.isDarkMode()) {
-                            projectIcon.setBackground(bIconBG);
-                        } else {
-                            projectIcon.setBackground(wIconBG);
-                        }
+                if (ThemeManager.isDarkMode()) {
+                    projectIcon.setBackground(bIconBG);
+                } else {
+                    projectIcon.setBackground(wIconBG);
+                }
             }
 
             @Override
@@ -180,9 +191,23 @@ public class SideBarPanel extends JPanel {
             g2d.fillRect(0,0,62,698);
             g2d.setColor(blackL);
             g2d.fillRect(62,0,2,698);
-            home.setBackground(blackBG);
-            for (JLabel pIcons : projectIcons)
-                pIcons.setBackground(blackBG);
+            switch (mainPanel) {
+                case 0:
+                    for (JLabel pIcons : projectIcons)
+                        pIcons.setBackground(blackBG);
+                    g2d.setColor(bIconBG);
+                    g2d.fillRoundRect(13, 13 + (49*mainPanel), 36, 36, 4, 4);
+                    break;
+                case 1,2,3,4:
+                    for (JLabel pIcons : projectIcons) {
+                        if (projectIcons.indexOf(pIcons) == mainPanel)
+                            continue;
+                        pIcons.setBackground(blackBG);
+                    }
+                    g2d.setColor(bIconBG);
+                    g2d.fillRoundRect(13, 13 + (49*mainPanel), 36, 36, 4, 4);
+                    break;
+            }
         } else {
             g2d.setColor(whiteBG);
             g2d.fillRect(0,0,62,698);

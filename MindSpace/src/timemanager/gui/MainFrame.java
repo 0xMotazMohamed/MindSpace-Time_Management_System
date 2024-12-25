@@ -14,7 +14,12 @@ public class MainFrame extends JFrame {
 
     DAOFactory daoFactory = new DAOFactory();
     BAOFactory baoFactory = new BAOFactory(daoFactory);
+
+
     private Account account;
+    private Project project;
+    private SideBarPanel SBP;
+    private AppPanel appPanel;
 
     public MainFrame() {
         setTitle("Time Management");
@@ -37,13 +42,23 @@ public class MainFrame extends JFrame {
     }
 
     public void setAccount(Account account) {
-//        this.account = account;
-        mainPanel.add(new AppPanel(this, baoFactory, account), "MainPage");
+        this.account = account;
+        appPanel = new AppPanel(this, SBP, baoFactory, account);
+        mainPanel.add(appPanel, "MainPage");
         mainPanel.add(new SideBarPanel(this, account),"SideBar");
     }
 
     public void setProject(Project project) {
-        mainPanel.add(new ProjectPanel(this, project),"ProjectPage");
+        this.project = project;
+        mainPanel.add(new ProjectPanel(this,SBP ,account, project),"ProjectPage");
+    }
+
+    public AppPanel getAppPanel() {
+        return appPanel;
+    }
+
+    public void setSBP(SideBarPanel sideBarPanel) {
+        this.SBP = sideBarPanel;
     }
 
     public void showPage(String pageName) {
