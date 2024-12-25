@@ -4,12 +4,14 @@ import timemanager.data.dto.flyweight.Status;
 import timemanager.data.dto.flyweight.StatusType;
 
 import java.util.HashSet;
+import java.util.LinkedHashSet;
+
 public class Project {
     private String name;
     private String description;
-    private HashSet<Task> toDoTasks = new HashSet<>();
-    private HashSet<Task> inProgressTasks = new HashSet<>();
-    private HashSet<Task> completedTasks = new HashSet<>();
+    private HashSet<Task> toDoTasks = new LinkedHashSet<>();
+    private HashSet<Task> inProgressTasks = new LinkedHashSet<>();
+    private HashSet<Task> completedTasks = new LinkedHashSet<>();
 
     public Project(String name, String description) {
         this.name = name;
@@ -44,6 +46,7 @@ public class Project {
     public HashSet<Task> getCompletedTasks() {
         return completedTasks;
     }
+
     public void deleteTask(Task task ,HashSet<Task> source){
         if (source.contains(task)) {
             source.remove(task);          // Remove the task from the source set

@@ -5,7 +5,7 @@ public class Account {
     private String name;
     private String email;
     private String password;
-    private HashSet<Project> projects = new HashSet<>();
+    private HashSet<Project> projects = new LinkedHashSet<>();
 
     public Account(String name, String email, String password, Gender gender) {
         this.name = name;

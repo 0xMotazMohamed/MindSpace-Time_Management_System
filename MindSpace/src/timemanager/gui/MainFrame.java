@@ -3,6 +3,7 @@ package timemanager.gui;
 import timemanager.business.bao.BAOFactory;
 import timemanager.data.dao.DAOFactory;
 import timemanager.data.dto.Account;
+import timemanager.data.dto.Project;
 
 import javax.swing.*;
 import java.awt.*;
@@ -36,8 +37,13 @@ public class MainFrame extends JFrame {
     }
 
     public void setAccount(Account account) {
-        this.account = account;
+//        this.account = account;
         mainPanel.add(new AppPanel(this, baoFactory, account), "MainPage");
+        mainPanel.add(new SideBarPanel(this, account),"SideBar");
+    }
+
+    public void setProject(Project project) {
+        mainPanel.add(new ProjectPanel(this, project),"ProjectPage");
     }
 
     public void showPage(String pageName) {

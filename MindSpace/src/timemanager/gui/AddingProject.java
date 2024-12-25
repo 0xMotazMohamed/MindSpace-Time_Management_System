@@ -33,16 +33,15 @@ public class AddingProject {
         JScrollPane scrollPane = new JScrollPane(desArea);
 
         JLabel numTasksLabel = new JLabel("Number of Tasks:");
-        JTextField numTasksField = new JTextField(5);
         JSpinner numTasksSpinner = new JSpinner(new SpinnerNumberModel(1,1,100,1));
 
         panel.add(nameLabel);
         panel.add(nameField);
         panel.add(Box.createVerticalStrut(10));
+        panel.add(Box.createHorizontalStrut(10));
         panel.add(desLabel);
         panel.add(scrollPane);
         panel.add(numTasksLabel);
-        panel.add(numTasksField);
         panel.add(numTasksSpinner);
 
         int ProjectOption = JOptionPane.showConfirmDialog(null, panel,
@@ -73,7 +72,6 @@ public class AddingProject {
             JPanel taskPanel = new JPanel(new GridLayout(1,4));
             taskPanel.add(new JLabel("Task " + (i+1) + " Name:"));
             JTextField taskNameField = new JTextField(10);
-            taskNameField.setBackground(Color.LIGHT_GRAY);
             taskNameField.setForeground(Color.GRAY);
             final int taskId = (i + 1);
             taskNameField.setText("Task " + taskId);
@@ -82,17 +80,8 @@ public class AddingProject {
                 public void mouseClicked(MouseEvent e) {
                     if (taskNameField.getForeground().equals(Color.GRAY)) {
                         taskNameField.setText("");
-                        taskNameField.setBackground(null);
                         taskNameField.setForeground(null);
                         taskNameField.grabFocus();
-                    }
-                }
-                @Override
-                public void mouseReleased(MouseEvent e) {
-                    if (taskNameField.getText().trim().equals("")) {
-                        taskNameField.setText("Task " + taskId);
-                        taskNameField.setBackground(Color.LIGHT_GRAY);
-                        taskNameField.setForeground(Color.GRAY);
                     }
                 }
             });
