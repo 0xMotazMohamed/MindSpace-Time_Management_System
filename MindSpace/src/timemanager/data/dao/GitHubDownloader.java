@@ -8,11 +8,11 @@ import java.io.File;
 public class GitHubDownloader {
     private static final String REPO_URL = "https://AbdullahMostafa24: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@github.com/AbdullahMostafa24/TimeManagementData.git";
     private static final String LOCAL_PATH = "local-repo";
-
+    static File localRepo = new File(LOCAL_PATH);
     public static void download() {
         try {
             //Clone repo if not cloned
-            File localRepo = new File(LOCAL_PATH);
+
             if (!localRepo.exists()) {
                 Git.cloneRepository()
                         .setURI(REPO_URL)
