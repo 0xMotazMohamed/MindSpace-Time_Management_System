@@ -9,8 +9,9 @@ import java.nio.file.StandardCopyOption;
 public class GitHubUploader {
     private static final String REPO_URL = "https://AbdullahMostafa24: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@github.com/AbdullahMostafa24/TimeManagementData.git";
     private static final String LOCAL_PATH = "local-repo";
+    private static final String LOCAL_FILE = "accounts.json";
 
-    public static void main(String[] args) {
+    public static void upload() {
         try {
             //Clone repo if not cloned
             File localRepo = new File(LOCAL_PATH);
@@ -21,10 +22,8 @@ public class GitHubUploader {
                         .call();
             }
 
-            //Open repo
+            //Open repo and copy file into it
             Git git = Git.open(localRepo);
-
-            //Copy accounts.json to repo directory
             File sourceFile = new File("accounts.json");
             File targetFile = new File(LOCAL_PATH, "accounts.json");
             if (sourceFile.exists()) {
@@ -32,7 +31,7 @@ public class GitHubUploader {
             }
 
             //Add & Commit changes
-            git.add().addFilepattern(".").call();
+            git.add().addFilepattern("accounts.json").call();
             git.commit().setMessage("Updated accounts.json").call();
 
             //Push changes

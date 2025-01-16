@@ -44,8 +44,10 @@ public class SignUpImpl implements SignUp {
             return -1; // Email must end with '.com'
         }
 
-        if (email.equals(dao.getAccounts().get(email).getEmail())) {
-            return -2; // Email is used for another account
+        if (dao.getAccountByEmail(email) != null) {
+            if (email.equals(dao.getAccounts().get(email).getEmail())) {
+                return -2; // Email is used for another account
+            }
         }
 
         return 1;

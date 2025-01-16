@@ -21,16 +21,21 @@ public class DataImpl {
         loadAccounts();
     }
 
-    //load accounts from file
+    //load accounts from file if not exist or empty, initialize new one
     public static void loadAccounts() {
-        try(Reader reader = new FileReader(DATA_FILE)) {
-            Type accountListType = new TypeToken<List<Account>>() {}.getType();
-            accounts = GSON.fromJson(reader, accountListType);
-            if (accounts == null) accounts = new HashMap<>();
-        } catch (FileNotFoundException e) {
-            System.out.println("No saved data found. Starting fresh");
-        } catch (IOException e) {
-            e.printStackTrace();
+        File file = new File(DATA_FILE);
+        if (file.exists()) {
+            try (Reader reader = new FileReader(DATA_FILE)) {
+                Type accountMapType = new TypeToken<HashMap<String, Account>>() {}.getType();
+                accounts = GSON.fromJson(reader, accountMapType);
+                if (accounts == null) accounts = new HashMap<>();
+            } catch (IOException e) {
+                System.err.println("Error reading accounts from file:" + e.getMessage());
+                accounts = new HashMap<>();
+            }
+        } else {
+            System.out.println("No saved data found. Starting fresh.");
+            accounts = new HashMap<>();
         }
     }
 
@@ -38,7 +43,7 @@ public class DataImpl {
         try (Writer writer = new FileWriter(DATA_FILE)) {
             GSON.toJson(accounts, writer);
         } catch (IOException e) {
-            e.printStackTrace();
+            System.err.println("Error saving accounts to file:" + e.getMessage());
         }
     }
 
