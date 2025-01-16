@@ -34,6 +34,7 @@ public class ProjectPanel extends JPanel {
     private Color bText = new Color(255,255,255);
 
     Project p;
+    SideBarPanel SBP;
 
     ArrayList<JLabel> taskNames = new ArrayList<>();
 
@@ -45,14 +46,17 @@ public class ProjectPanel extends JPanel {
 
     Dimension labelSize;
 
-    int lastX = 85;
-    int lastY = 260;
+    int lastX; //95
+    int lastY; //260
 
     public ProjectPanel(MainFrame mainFrame,SideBarPanel SBP , Account account, Project project) {
         setLayout(null);
         this.p = project;
+        this.SBP = SBP;
 
         add(SBP);
+        revalidate();
+        repaint();
 
         projectName = new JLabel(p.getName(), SwingConstants.CENTER);
         projectName.setFont(titleFont);
@@ -68,25 +72,31 @@ public class ProjectPanel extends JPanel {
         projectDes.setFocusable(false);
         projectDes.setOpaque(false);
 
-        completedLabel = new JLabel("Completed", SwingConstants.LEFT);
-        completedLabel.setFont(subTitleFont);
-        completedLabel.setBounds(95,230,160,30);
-        inProgressLabel = new JLabel("InProgress", SwingConstants.LEFT);
-        inProgressLabel.setFont(subTitleFont);
-        inProgressLabel.setBounds(95,380,160,30);
         toDoLabel = new JLabel("ToDo", SwingConstants.LEFT);
         toDoLabel.setFont(subTitleFont);
-        toDoLabel.setBounds(95,530,160,30);
+        toDoLabel.setBounds(100,230,160,30);
+        inProgressLabel = new JLabel("InProgress", SwingConstants.LEFT);
+        inProgressLabel.setFont(subTitleFont);
+        inProgressLabel.setBounds(100,390,160,30);
+        completedLabel = new JLabel("Completed", SwingConstants.LEFT);
+        completedLabel.setFont(subTitleFont);
+        completedLabel.setBounds(100,550,160,30);
 
         paintTasks:{
+            lastX = 95;
+            lastY = 260;
             for (Task task : p.getToDoTasks()) {
-                paintTask(task, 1, 210);
+                paintTask(task, 0);
             }
+            lastX = 95;
+            lastY = 420;
             for (Task task : p.getInProgressTasks()) {
-                paintTask(task, 1, 115);
+                paintTask(task, 1);
             }
+            lastX = 95;
+            lastY = 580;
             for (Task task : p.getCompletedTasks()) {
-                paintTask(task, 1, 20);
+                paintTask(task, 2);
             }
         }
 
@@ -97,132 +107,175 @@ public class ProjectPanel extends JPanel {
         add(toDoLabel);
     }
 
-    public void paintTask(Task task, int n, int x) {
+    public void paintTask(Task task,  int n) {
         JLabel taskName = new JLabel(task.getTitle(), SwingConstants.CENTER);
         taskNames.add(taskName);
         taskName.setOpaque(true);
         taskName.setFont(textFont);
 
         labelSize = taskName.getPreferredSize();
-        taskName.setBounds(lastX + 10,lastY + 10
-                , labelSize.width, labelSize.height);
-        if (lastX > 650) {
-            lastX = 85;
+        if (lastX + 10 + labelSize.width > 670) {
+            lastX = 95;
             lastY += labelSize.height + 10;
-        } else {
-            lastX += labelSize.width + 10;
         }
+        if (lastY  + 10 + labelSize.height > (355 + 160*n)) {
+            return;
+        }
+        taskName.setBounds(lastX + 10, lastY + 10
+                , labelSize.width + 5, labelSize.height);
+        lastX += 10 + labelSize.width + 5;
         if (ThemeManager.isDarkMode()) {
             taskName.setBackground(bTaskBG);
         } else {
             taskName.setBackground(wTaskBG);
         }
+            final Point[] initialClick = new Point[1];
 
-        final Point[] initialClick = new Point[1];
-
-        taskName.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mousePressed(MouseEvent e) {
-                initialClick[0] = e.getPoint();
-                if (ThemeManager.isDarkMode()) {
-                    taskName.setBackground(bPressedtaskBG);
-                } else {
-                    taskName.setBackground(wPressedtaskBG);
-                }
-            }
-
-            @Override
-            public void mouseReleased(MouseEvent e) {
-                int finalX = taskName.getX() + 40;
-                int finalY = taskName.getY() + 15;
-                if (ThemeManager.isDarkMode()) {
-                    taskName.setBackground(bTaskBG);
-                } else {
-                    taskName.setBackground(wTaskBG);
-                }
-                StatusType statusType = task.getStatus().getStatus();
-
-                if (finalX >= 15 && finalX <= 95 && finalY >= 90 && finalY <= 290) {
-                    if (!statusType.equals(StatusType.COMPLETED)) {
-                        p.transferTask(task, p.getTasksByStatus(statusType), p.getCompletedTasks());
-                        remove(taskName);
-                        updateTasksDisplay();
+            taskName.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mousePressed(MouseEvent e) {
+                    initialClick[0] = e.getPoint();
+                    if (ThemeManager.isDarkMode()) {
+                        taskName.setBackground(bPressedtaskBG);
                     } else {
-                        remove(taskName);
-                        updateTasksDisplay();
+                        taskName.setBackground(wPressedtaskBG);
                     }
-                } else if (finalX >= 110 && finalX <= 190 && finalY >= 90 && finalY <= 290) {
-                    if (!statusType.equals(StatusType.INPROGRESS)) {
-                        p.transferTask(task, p.getTasksByStatus(statusType), p.getInProgressTasks());
-                        remove(taskName);
-                        updateTasksDisplay();
-                    } else {
-                        remove(taskName);
-                        updateTasksDisplay();
-                    }
-                } else if (finalX >= 205 && finalX <= 285 && finalY >= 90 && finalY <= 290) {
-                    if (!statusType.equals(StatusType.TODO)) {
-                        p.transferTask(task, p.getTasksByStatus(statusType), p.getToDoTasks());
-                        remove(taskName);
-                        updateTasksDisplay();
-                    } else {
-                        remove(taskName);
-                        updateTasksDisplay();
-                    }
-                } else {
-                    remove(taskName);
-                    updateTasksDisplay();
                 }
-            }
-        });
 
-        taskName.addMouseMotionListener(new MouseAdapter() {
-            @Override
-            public void mouseDragged(MouseEvent e) {
-                int deltaX = e.getX() - initialClick[0].x;
-                int deltaY = e.getY() - initialClick[0].y;
+                @Override
+                public void mouseReleased(MouseEvent e) {
+                    int finalX = taskName.getX() + 40;
+                    int finalY = taskName.getY() + 15;
+                    if (ThemeManager.isDarkMode()) {
+                        taskName.setBackground(bTaskBG);
+                    } else {
+                        taskName.setBackground(wTaskBG);
+                    }
+                    StatusType statusType = task.getStatus().getStatus();
 
-                taskName.setLocation(taskName.getX() + deltaX, taskName.getY() + deltaY);
-            }
-        });
+                    if (finalX >= 100 && finalX <= 680) {
+                        if (finalY >= 265 && finalY <= 360) {
+                            if (!statusType.equals(StatusType.TODO)) {
+                                p.transferTask(task, p.getTasksByStatus(statusType),
+                                        p.getToDoTasks());
+                                remove(taskName);
+                                updateTasksDisplay();
+                            } else {
+                                remove(taskName);
+                                updateTasksDisplay();
+                            }
+                        } else if (finalY >= 425 && finalY <= 520) {
+                            if (!statusType.equals(StatusType.INPROGRESS)) {
+                                p.transferTask(task, p.getTasksByStatus(statusType),
+                                        p.getInProgressTasks());
+                                remove(taskName);
+                                updateTasksDisplay();
+                            } else {
+                                remove(taskName);
+                                updateTasksDisplay();
+                            }
+                        } else if (finalY >= 585 && finalY <= 680) {
+                            if (!statusType.equals(StatusType.COMPLETED)) {
+                                p.transferTask(task, p.getTasksByStatus(statusType),
+                                        p.getCompletedTasks());
+                                remove(taskName);
+                                updateTasksDisplay();
+                            } else {
+                                remove(taskName);
+                                updateTasksDisplay();
+                            }
+                        } else {
+                            remove(taskName);
+                            updateTasksDisplay();
+                        }
+                    }
+                }
+            });
+
+            taskName.addMouseMotionListener(new MouseAdapter() {
+                @Override
+                public void mouseDragged(MouseEvent e) {
+                    int deltaX = e.getX() - initialClick[0].x;
+                    int deltaY = e.getY() - initialClick[0].y;
+
+                    taskName.setLocation(taskName.getX() + deltaX, taskName.getY() + deltaY);
+                }
+            });
         add(taskName);
         revalidate();
         repaint();
-    }
+        }
 
     public void updateTasksDisplay() {
         removeAll();
         repaint();
+        add(SBP);
         add(projectName);
         add(projectDes);
         add(completedLabel);
         add(inProgressLabel);
         add(toDoLabel);
-        int taskN = 0;
+        lastX = 95;
+        lastY = 260;
         for (Task task : p.getToDoTasks()) {
-            taskN++;
-            paintTask(task, taskN, 210);
-            if (taskN == 5)
-                break;
+            paintTask(task, 0);
         }
-        taskN = 0;
+        lastX = 95;
+        lastY = 420;
         for (Task task : p.getInProgressTasks()) {
-            taskN++;
-            paintTask(task, taskN, 115);
-            if (taskN == 5)
-                break;
+            paintTask(task, 1);
         }
-        taskN = 0;
+        lastX = 95;
+        lastY = 580;
         for (Task task : p.getCompletedTasks()) {
-            taskN++;
-            paintTask(task, taskN, 20);
-            if (taskN == 5)
-                break;
+            paintTask(task, 2);
         }
     }
 
-    public void painComponent(Graphics g) {
+    public void setSBP(SideBarPanel sideBarPanel) {
+        this.SBP = sideBarPanel;
+        add(SBP);
+    }
+
+    public void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;
+
+        if (ThemeManager.isDarkMode()) {
+            g2d.setColor(bProjectBG);
+            completedLabel.setForeground(Color.white);
+            inProgressLabel.setForeground(Color.white);
+            toDoLabel.setForeground(Color.white);
+            for (JLabel labels : taskNames)
+                labels.setBackground(bTaskBG);
+        } else {
+            g2d.setColor(wProjectBG);
+            completedLabel.setForeground(Color.black);
+            inProgressLabel.setForeground(Color.black);
+            toDoLabel.setForeground(Color.black);
+            for (JLabel labels : taskNames)
+                labels.setBackground(wTaskBG);
+        }
+        g2d.fillRoundRect(80,80,625,625,30,30);
+        g2d.setColor(ToDoBG);
+        g2d.fillRoundRect(90,230,80,50,20,20);
+        g2d.fillRoundRect(90,255,600,115,20,20);
+        g2d.setColor(InProgrssBG);
+        g2d.fillRoundRect(90,390,140,50,20,20);
+        g2d.fillRoundRect(90,415,600,115,20,20);
+        g2d.setColor(CompletedBG);
+        g2d.fillRoundRect(90,550,140,50,20,20);
+        g2d.fillRoundRect(90,575,600,115,20,20);
+        if (ThemeManager.isDarkMode()) {
+            g2d.setColor(bStatusBG);
+            g2d.fillRoundRect(100,265,580,95,10,10);
+            g2d.fillRoundRect(100,425,580,95,10,10);
+            g2d.fillRoundRect(100,585,580,95,10,10);
+        } else {
+            g2d.setColor(wStatusBG);
+            g2d.fillRoundRect(100,265,580,95,10,10);
+            g2d.fillRoundRect(100,425,580,95,10,10);
+            g2d.fillRoundRect(100,585,580,95,10,10);
+        }
     }
 }

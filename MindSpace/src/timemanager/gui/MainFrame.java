@@ -20,6 +20,8 @@ public class MainFrame extends JFrame {
     private Project project;
     private SideBarPanel SBP;
     private AppPanel appPanel;
+    private ProjectPanel projectPanel ;
+    private ReminderPanel reminderPanel;
 
     public MainFrame() {
         setTitle("Time Management");
@@ -53,12 +55,20 @@ public class MainFrame extends JFrame {
         mainPanel.add(new ProjectPanel(this,SBP ,account, project),"ProjectPage");
     }
 
+    public void setSBP(SideBarPanel sideBarPanel) {
+        this.SBP = sideBarPanel;
+    }
+
     public AppPanel getAppPanel() {
         return appPanel;
     }
 
-    public void setSBP(SideBarPanel sideBarPanel) {
-        this.SBP = sideBarPanel;
+    public void setProjectPanel(ProjectPanel projectPanel) {
+        this.projectPanel = projectPanel;
+    }
+
+    public ProjectPanel getProjectPanel() {
+        return projectPanel;
     }
 
     public void showPage(String pageName) {
