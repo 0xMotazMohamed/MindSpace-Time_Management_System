@@ -6,8 +6,8 @@ import timemanager.data.dto.flyweight.Status;
 
 public class Task {
     private String title;
-    private Status status; // Status like "To Do", "In Progress", "Completed"
-    private Priority priority; // Priority object
+    private Status status;
+    private Priority priority;
 
     // Constructors
     public Task(String title, String p) {

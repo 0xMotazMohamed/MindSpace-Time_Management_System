@@ -1,5 +1,8 @@
 package timemanager.data.dto;
 
+import java.util.HashSet;
+import java.util.LinkedHashSet;
+
 public class Account {
 
     private String name;
@@ -7,10 +10,18 @@ public class Account {
     private String password;
     private HashSet<Project> projects = new LinkedHashSet<>();
 
-    public Account(String name, String email, String password, Gender gender) {
+    public Account(String name, String email, String password) {
         this.name = name;
         this.email = email;
         this.password = password;
+    }
+
+    public void addProject(Project pj) {
+        projects.add(pj);
+    }
+
+    public HashSet<Project> getProjects() {
+        return projects;
     }
 
     public String getName() {

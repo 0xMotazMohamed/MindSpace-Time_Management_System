@@ -49,7 +49,7 @@ public class Project {
 
     public void deleteTask(Task task ,HashSet<Task> source){
         if (source.contains(task)) {
-            source.remove(task);          // Remove the task from the source set
+            source.remove(task);
         }
         else{
             throw new IllegalArgumentException("Please entre a valid task");
@@ -67,7 +67,14 @@ public class Project {
         if (source == null)
             source = toDoTasks;
         if (task != null) {
-            source.add(task);          // Add the task to the source set
+            source.add(task);
+            if (source.equals(toDoTasks)) {
+                task.setStatus(new Status("ToDo"));
+            } else if (source.equals(inProgressTasks)) {
+                task.setStatus(new Status("InProgress"));
+            } else if (source.equals(completedTasks)) {
+                task.setStatus(new Status("Completed"));
+            }
         }
         else{
             throw new IllegalArgumentException("Task can't be null");
@@ -75,8 +82,8 @@ public class Project {
     }
     public void transferTask(Task task, HashSet<Task> source, HashSet<Task> destination) {
         if (source.contains(task)) {
-            source.remove(task);          // Remove the task from the source set
-            destination.add(task);       // Add the task to the destination set
+            deleteTask(task, source);
+            addTask(task, destination);
         }
         if (task == null) {
             throw new IllegalArgumentException("Task can't be null");
