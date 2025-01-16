@@ -1,14 +1,13 @@
 package timemanager.business.bao;
 
-import timemanager.data.dao.Data;
 import timemanager.data.dto.Account;
 import timemanager.data.dao.DAOFactory;
 
 public class SignInImpl implements SignIn {
-    private Data data;
+    private DAOFactory dao;
 
     public SignInImpl(DAOFactory daoFactory) {
-        this.data = daoFactory.getData();
+        this.dao = daoFactory;
     }
 
     // Check if the email exists in the "database"
@@ -17,7 +16,7 @@ public class SignInImpl implements SignIn {
             return 0; // Email field is empty
         }
 
-        Account account = data.getAccountByEmail(email);
+        Account account = dao.getAccountByEmail(email);
         if (account == null) {
             return -1; // Email not found
         } else {
@@ -30,7 +29,7 @@ public class SignInImpl implements SignIn {
             return 0; // Password field is empty
         }
 
-        Account account = data.getAccountByEmail(email);
+        Account account = dao.getAccountByEmail(email);
         if (account == null) {
             return 0; // Account not found, no need to check password
         } else if (account.getPassword().equals(password)) {

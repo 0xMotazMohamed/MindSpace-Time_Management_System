@@ -80,7 +80,7 @@ public class SignInPanel extends JPanel {
                         break;
                     default:
                         errorLabel.setText("");
-                        mainFrame.setAccount(baoFactory.getDaoFactory().getData().getAccountByEmail(Email));
+                        mainFrame.setAccount(baoFactory.getDaoFactory().getAccountByEmail(Email));
                         mainFrame.showPage("MainPage");
                 }
             }
@@ -124,7 +124,7 @@ public class SignInPanel extends JPanel {
         JButton t = new JButton("login ^_^");
         t.setBounds(275,650,150,20);
         t.addActionListener(e -> {
-            mainFrame.setAccount(baoFactory.getDaoFactory().getData().getAccountByEmail("abdullah@gmail.com"));
+            mainFrame.setAccount(baoFactory.getDaoFactory().getAccountByEmail("abdullah@gmail.com"));
             mainFrame.showPage("MainPage");
         });
         add(t);

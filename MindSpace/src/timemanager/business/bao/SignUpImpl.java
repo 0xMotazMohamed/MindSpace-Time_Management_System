@@ -1,14 +1,14 @@
 package timemanager.business.bao;
 
 import timemanager.data.dao.DAOFactory;
-import timemanager.data.dao.Data;
+import timemanager.data.dao.DataImpl;
 import timemanager.data.dto.Account;
 
 public class SignUpImpl implements SignUp {
-    private Data data;
-    
+    private DAOFactory dao;
+
     public SignUpImpl(DAOFactory daoFactory) {
-        this.data = daoFactory.getData();
+        this.dao = daoFactory;
     }
 
     public byte checkUsername(String username) {
@@ -44,7 +44,7 @@ public class SignUpImpl implements SignUp {
             return -1; // Email must end with '.com'
         }
 
-        if (email.equals(data.getAllAccounts().get(email).getEmail())) {
+        if (email.equals(dao.getAccounts().get(email).getEmail())) {
             return -2; // Email is used for another account
         }
 
@@ -83,7 +83,7 @@ public class SignUpImpl implements SignUp {
         if (passwordCheck == 0) return 30;  // Password field is empty
         if (passwordCheck == -1) return 29;  // Password incorrect
 
-        data.addAccount(new Account(username, email, password));
+        dao.addAccount(new Account(username, email, password));
 
         return  0; //Successful Sign In
     }

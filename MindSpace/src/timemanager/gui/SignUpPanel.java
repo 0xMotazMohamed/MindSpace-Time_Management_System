@@ -222,7 +222,7 @@ public class SignUpPanel extends JPanel {
                     default:
                         errorLabel.setText("");
                         errorLabel2.setText("");
-                        mainFrame.setAccount(baoFactory.getDaoFactory().getData().getAccountByEmail(Email));
+                        mainFrame.setAccount(baoFactory.getDaoFactory().getAccountByEmail(Email));
                         mainFrame.showPage("MainPage");
                 }
             }

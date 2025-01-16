@@ -3,7 +3,6 @@ package timemanager.data.dao;
 import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.errors.GitAPIException;
 
-import javax.xml.transform.Source;
 import java.io.File;
 import java.nio.file.StandardCopyOption;
 

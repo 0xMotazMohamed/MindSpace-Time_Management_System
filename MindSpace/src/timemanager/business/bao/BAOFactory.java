@@ -1,7 +1,6 @@
 package timemanager.business.bao;
 
 import timemanager.data.dao.DAOFactory;
-import timemanager.data.dao.Data;
 
 public class BAOFactory {
     private DAOFactory daoFactory;

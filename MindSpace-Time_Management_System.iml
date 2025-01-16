@@ -10,5 +10,6 @@
     <orderEntry type="library" name="MigLayout" level="project" />
     <orderEntry type="library" name="flatlaf-3.5.3" level="project" />
     <orderEntry type="library" name="org.eclipse.jgit-7.1.0.202411261347-r" level="project" />
+    <orderEntry type="library" name="gson-2.11.0" level="project" />
   </component>
 </module>

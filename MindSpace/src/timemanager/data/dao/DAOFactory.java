@@ -1,13 +1,28 @@
 package timemanager.data.dao;
 
-public class DAOFactory {
-    private Data data;
+import timemanager.data.dto.Account;
 
-    public DAOFactory() {
-        this.data = new DataImpl();
+import java.util.HashMap;
+
+public class DAOFactory {
+
+//    private Data data;
+
+//    public DAOFactory() {
+//        this.data = new DataImpl();
+//    }
+//
+//    public DataImpl getData() {
+//        return  DataImpl;
+//    }
+    public void addAccount(Account account) {
+        DataImpl.addAccount(account);
+    }
+    public Account getAccountByEmail(String email) {
+        return DataImpl.getAccountByEmail(email);
     }
 
-    public Data getData() {
-        return  this.data;
+    public HashMap<String, Account> getAccounts() {
+        return DataImpl.getAccounts();
     }
 }
