@@ -1,0 +1,25 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="TestMaven">
+    <output-path>$PROJECT_DIR$/out/artifacts/TestMaven</output-path>
+    <root id="archive" name="MindSpace-Time_Management_System.jar">
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/TestMaven/src/main/resources/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="module-output" name="MindSpace-Time_Management_System" />
+      <element id="module-output" name="TestMaven" />
+      <element id="library" level="project" name="gson-2.11.0" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/google/code/gson/gson/2.11.0/gson-2.11.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/google/errorprone/error_prone_annotations/2.27.0/error_prone_annotations-2.27.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/slf4j/slf4j-simple/2.0.16/slf4j-simple-2.0.16.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/slf4j/slf4j-api/2.0.16/slf4j-api-2.0.16.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/commons-codec/commons-codec/1.17.1/commons-codec-1.17.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/formdev/flatlaf/3.5.4/flatlaf-3.5.4.jar" path-in-jar="/" />
+      <element id="library" level="project" name="org.eclipse.jgit-7.1.0.202411261347-r" />
+      <element id="library" level="project" name="slf4j-simple-2.0.16" />
+      <element id="library" level="project" name="flatlaf-3.5.4" />
+      <element id="library" level="project" name="slf4j-api-2.0.16" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/googlecode/javaewah/JavaEWAH/1.2.3/JavaEWAH-1.2.3.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/eclipse/jgit/org.eclipse.jgit/7.1.0.202411261347-r/org.eclipse.jgit-7.1.0.202411261347-r.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
