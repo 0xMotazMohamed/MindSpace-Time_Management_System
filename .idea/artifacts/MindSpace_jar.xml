@@ -1,0 +1,18 @@
+<component name="ArtifactManager">
+  <artifact name="MindSpace:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/MindSpace_jar</output-path>
+    <root id="root">
+      <element id="archive" name="MindSpace.jar">
+        <element id="module-output" name="MindSpaceMine" />
+      </element>
+      <element id="library" level="project" name="Maven: com.formdev:flatlaf:3.5.4" />
+      <element id="library" level="project" name="Maven: com.googlecode.javaewah:JavaEWAH:1.2.3" />
+      <element id="library" level="project" name="Maven: org.eclipse.jgit:org.eclipse.jgit:7.1.0.202411261347-r" />
+      <element id="library" level="project" name="Maven: com.google.errorprone:error_prone_annotations:2.27.0" />
+      <element id="library" level="project" name="Maven: commons-codec:commons-codec:1.17.1" />
+      <element id="library" level="project" name="Maven: com.google.code.gson:gson:2.11.0" />
+      <element id="library" level="project" name="Maven: org.slf4j:slf4j-simple:2.0.16" />
+      <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:2.0.16" />
+    </root>
+  </artifact>
+</component>

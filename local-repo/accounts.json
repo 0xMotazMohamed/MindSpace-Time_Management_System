@@ -1,0 +1,210 @@
+{
+  "moataz@gmail.com": {
+    "name": "Moataz",
+    "email": "moataz@gmail.com",
+    "password": "Motaz1234",
+    "projects": [
+      {
+        "name": "البناء المنهجي",
+        "description": "دفعة الفتح | المسار الميسر",
+        "toDoTasks": [
+          {
+            "title": "Task 1",
+            "status": {
+              "statusType": "TODO"
+            },
+            "priority": {
+              "priorityType": "HIGH"
+            }
+          },
+          {
+            "title": "Task 7",
+            "status": {
+              "statusType": "TODO"
+            },
+            "priority": {
+              "priorityType": "MEDIUM"
+            }
+          },
+          {
+            "title": "Task 5",
+            "status": {
+              "statusType": "TODO"
+            },
+            "priority": {
+              "priorityType": "MEDIUM"
+            }
+          },
+          {
+            "title": "Task 6",
+            "status": {
+              "statusType": "TODO"
+            },
+            "priority": {
+              "priorityType": "MEDIUM"
+            }
+          }
+        ],
+        "inProgressTasks": [
+          {
+            "title": "Task 2",
+            "status": {
+              "statusType": "INPROGRESS"
+            },
+            "priority": {
+              "priorityType": "HIGH"
+            }
+          }
+        ],
+        "completedTasks": [
+          {
+            "title": "Task 4",
+            "status": {
+              "statusType": "COMPLETED"
+            },
+            "priority": {
+              "priorityType": "MEDIUM"
+            }
+          },
+          {
+            "title": "Task 3",
+            "status": {
+              "statusType": "COMPLETED"
+            },
+            "priority": {
+              "priorityType": "LOW"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "testasd@gmail.com": {
+    "name": "Ttest",
+    "email": "testasd@gmail.com",
+    "password": "Ttest1234",
+    "projects": []
+  },
+  "test@gmail.com": {
+    "name": "Ttest",
+    "email": "test@gmail.com",
+    "password": "Ttest1234",
+    "projects": [
+      {
+        "name": "as",
+        "description": "\t",
+        "toDoTasks": [
+          {
+            "title": "Task 1",
+            "status": {
+              "statusType": "TODO"
+            },
+            "priority": {
+              "priorityType": "MEDIUM"
+            }
+          }
+        ],
+        "inProgressTasks": [],
+        "completedTasks": []
+      }
+    ]
+  },
+  "new@gmail.com": {
+    "name": "NEWnew",
+    "email": "new@gmail.com",
+    "password": "NEWnew123",
+    "projects": []
+  },
+  "abdullah@gmail.com": {
+    "name": "abdullah",
+    "email": "abdullah@gmail.com",
+    "password": "Abdullah4",
+    "projects": [
+      {
+        "name": "asd",
+        "description": "",
+        "toDoTasks": [
+          {
+            "title": "Task 1",
+            "status": {
+              "statusType": "TODO"
+            },
+            "priority": {
+              "priorityType": "MEDIUM"
+            }
+          }
+        ],
+        "inProgressTasks": [],
+        "completedTasks": []
+      },
+      {
+        "name": "asdasd",
+        "description": "",
+        "toDoTasks": [
+          {
+            "title": "Task 1",
+            "status": {
+              "statusType": "TODO"
+            },
+            "priority": {
+              "priorityType": "MEDIUM"
+            }
+          }
+        ],
+        "inProgressTasks": [],
+        "completedTasks": []
+      },
+      {
+        "name": "asd",
+        "description": "",
+        "toDoTasks": [
+          {
+            "title": "Task 1",
+            "status": {
+              "statusType": "TODO"
+            },
+            "priority": {
+              "priorityType": "MEDIUM"
+            }
+          }
+        ],
+        "inProgressTasks": [],
+        "completedTasks": []
+      },
+      {
+        "name": "asd",
+        "description": "",
+        "toDoTasks": [
+          {
+            "title": "Task 1",
+            "status": {
+              "statusType": "TODO"
+            },
+            "priority": {
+              "priorityType": "MEDIUM"
+            }
+          }
+        ],
+        "inProgressTasks": [],
+        "completedTasks": []
+      },
+      {
+        "name": "asdasdasds",
+        "description": "",
+        "toDoTasks": [
+          {
+            "title": "Task 1",
+            "status": {
+              "statusType": "TODO"
+            },
+            "priority": {
+              "priorityType": "MEDIUM"
+            }
+          }
+        ],
+        "inProgressTasks": [],
+        "completedTasks": []
+      }
+    ]
+  }
+}
