@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="53b98d1d-46f6-4149-99dc-d0828fbc947e" name="Changes" comment="1/27 7:56">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/data/dao/AccountDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/data/dao/AccountDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/data/dao/GitHubDownloader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/data/dao/GitHubDownloader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/data/dao/GitHubUploader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/data/dao/GitHubUploader.java" afterDir="false" />
-    </list>
+    <list default="true" id="53b98d1d-46f6-4149-99dc-d0828fbc947e" name="Changes" comment="1/27 8:49" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -110,7 +105,7 @@
       <workItem from="1737989738625" duration="579000" />
       <workItem from="1737990491330" duration="227000" />
       <workItem from="1737999095855" duration="4073000" />
-      <workItem from="1738003386877" duration="392000" />
+      <workItem from="1738003386877" duration="507000" />
     </task>
     <task id="LOCAL-00001" summary="1/25 10:23">
       <option name="closed" value="true" />
@@ -152,7 +147,15 @@
       <option name="project" value="LOCAL" />
       <updated>1738000572772</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="1/27 8:49">
+      <option name="closed" value="true" />
+      <created>1738003809692</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1738003809692</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -163,6 +166,7 @@
     <MESSAGE value="1/25 10:24" />
     <MESSAGE value="1/27 4:57" />
     <MESSAGE value="1/27 7:56" />
-    <option name="LAST_COMMIT_MESSAGE" value="1/27 7:56" />
+    <MESSAGE value="1/27 8:49" />
+    <option name="LAST_COMMIT_MESSAGE" value="1/27 8:49" />
   </component>
 </project>
