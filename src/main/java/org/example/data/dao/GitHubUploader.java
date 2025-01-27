@@ -9,7 +9,7 @@ import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
 
 public class GitHubUploader {
-    private static final String REPO_URL = "https://AbdullahMostafa24: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@github.com/AbdullahMostafa24/MindSpaceData.git";
+    private static final String REPO_URL = "https://AbdullahMostafa24:<GITHUB_TOKEN>@github.com/AbdullahMostafa24/MindSpaceData.git";
     private static final String LOCAL_REPO_PATH = System.getenv("APPDATA");
 
     // Singleton pattern
