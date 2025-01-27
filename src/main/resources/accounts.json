@@ -9,15 +9,6 @@
         "description": "دفعة الفتح | المسار الميسر",
         "toDoTasks": [
           {
-            "title": "Task 1",
-            "status": {
-              "statusType": "TODO"
-            },
-            "priority": {
-              "priorityType": "HIGH"
-            }
-          },
-          {
             "title": "Task 7",
             "status": {
               "statusType": "TODO"
@@ -27,7 +18,16 @@
             }
           },
           {
-            "title": "Task 5",
+            "title": "Task 1",
+            "status": {
+              "statusType": "TODO"
+            },
+            "priority": {
+              "priorityType": "HIGH"
+            }
+          },
+          {
+            "title": "Task 6",
             "status": {
               "statusType": "TODO"
             },
@@ -36,7 +36,7 @@
             }
           },
           {
-            "title": "Task 6",
+            "title": "Task 5",
             "status": {
               "statusType": "TODO"
             },
@@ -58,21 +58,21 @@
         ],
         "completedTasks": [
           {
-            "title": "Task 4",
-            "status": {
-              "statusType": "COMPLETED"
-            },
-            "priority": {
-              "priorityType": "MEDIUM"
-            }
-          },
-          {
             "title": "Task 3",
             "status": {
               "statusType": "COMPLETED"
             },
             "priority": {
               "priorityType": "LOW"
+            }
+          },
+          {
+            "title": "Task 4",
+            "status": {
+              "statusType": "COMPLETED"
+            },
+            "priority": {
+              "priorityType": "MEDIUM"
             }
           }
         ]
@@ -138,6 +138,23 @@
         "completedTasks": []
       },
       {
+        "name": "asdasdasds",
+        "description": "",
+        "toDoTasks": [
+          {
+            "title": "Task 1",
+            "status": {
+              "statusType": "TODO"
+            },
+            "priority": {
+              "priorityType": "MEDIUM"
+            }
+          }
+        ],
+        "inProgressTasks": [],
+        "completedTasks": []
+      },
+      {
         "name": "asdasd",
         "description": "",
         "toDoTasks": [
@@ -173,23 +190,6 @@
       },
       {
         "name": "asd",
-        "description": "",
-        "toDoTasks": [
-          {
-            "title": "Task 1",
-            "status": {
-              "statusType": "TODO"
-            },
-            "priority": {
-              "priorityType": "MEDIUM"
-            }
-          }
-        ],
-        "inProgressTasks": [],
-        "completedTasks": []
-      },
-      {
-        "name": "asdasdasds",
         "description": "",
         "toDoTasks": [
           {

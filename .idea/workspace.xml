@@ -4,7 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="53b98d1d-46f6-4149-99dc-d0828fbc947e" name="Changes" comment="" />
+    <list default="true" id="53b98d1d-46f6-4149-99dc-d0828fbc947e" name="Changes" comment="1/25 10:24">
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/app/SimpleApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/app/SimpleApp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/data/dao/AccountDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/data/dao/AccountDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/data/dao/AccountDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/data/dao/AccountDAOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/data/dao/GitHubDownloader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/data/dao/GitHubDownloader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/data/dao/GitHubUploader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/data/dao/GitHubUploader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/gui/MainBarPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/gui/MainBarPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/gui/SettingsPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/gui/SettingsPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/accounts.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/accounts.json" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -12,6 +23,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="ROOT_SYNC" value="DONT_SYNC" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
@@ -36,14 +48,19 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;Application.App.executor&quot;: &quot;Run&quot;,
     &quot;Application.SimpleApp.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;javaFX&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/Abdo/IdeaProjects/MindSpace-Time_Management_System&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.inline.completion&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -53,6 +70,13 @@
     </key>
   </component>
   <component name="RunManager">
+    <configuration name="App" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="org.example.app.SimpleApp" />
+      <module name="MindSpace" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration default="true" type="JetRunConfigurationType">
       <module name="MindSpace-Time_Management_System" />
       <method v="2">
@@ -85,10 +109,36 @@
       <workItem from="1737792882498" duration="8000" />
       <workItem from="1737793105462" duration="25000" />
       <workItem from="1737793135553" duration="197000" />
+      <workItem from="1737793342691" duration="2679000" />
+      <workItem from="1737958326865" duration="4503000" />
+      <workItem from="1737977924928" duration="67000" />
+      <workItem from="1737980049644" duration="884000" />
     </task>
+    <task id="LOCAL-00001" summary="1/25 10:23">
+      <option name="closed" value="true" />
+      <created>1737793384390</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1737793384390</updated>
+    </task>
+    <task id="LOCAL-00002" summary="1/25 10:24">
+      <option name="closed" value="true" />
+      <created>1737793447347</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1737793447347</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="1/25 10:23" />
+    <MESSAGE value="1/25 10:24" />
+    <option name="LAST_COMMIT_MESSAGE" value="1/25 10:24" />
   </component>
 </project>

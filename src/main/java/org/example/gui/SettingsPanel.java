@@ -1,6 +1,9 @@
 package org.example.gui;
 
 import org.example.bao.BAOFactory;
+import org.example.data.dao.AccountDAOImpl;
+import org.example.data.dao.GitHubDownloader;
+import org.example.data.dao.GitHubUploader;
 import org.example.data.dto.Account;
 
 import javax.swing.*;
@@ -73,6 +76,7 @@ public class SettingsPanel {
             account.setPassword(newPassword);
             System.out.println(account.getName());
             System.out.println(account.getPassword());
+            baoFactory.getDaoFactory().getAccountDAO().updateData();
         } else if (response == 1) {
             int confirm = JOptionPane.showConfirmDialog(null,
                     "Are you sure deleting the account?",
@@ -81,6 +85,7 @@ public class SettingsPanel {
             if (confirm == 0) {
                 baoFactory.getDaoFactory().getAccountDAO().deleteAccount(emailField.getText());
                 mainFrame.showPage("WelcomePage");
+                baoFactory.getDaoFactory().getAccountDAO().updateData();
             }
         }
     }

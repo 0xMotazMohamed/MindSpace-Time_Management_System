@@ -8,36 +8,54 @@ import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
 
 public class GitHubDownloader {
-    private static final String REPO_URL = "https://AbdullahMostafa24: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@github.com/AbdullahMostafa24/TimeManagementData.git";
-    private static final String LOCAL_REPO_PATH = "local-repo"; //Temp folder to clone repo
-    private static final String LOCAL_JSON_PATH = "src/main/resources/accounts.json";
+    private static final String REPO_URL = "https://AbdullahMostafa24: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@github.com/AbdullahMostafa24/MindSpaceData.git";
 
-    public static void download() {
+    // Singleton pattern
+    private static final GitHubDownloader instace = new GitHubDownloader();
+
+    private final File targetDir;
+    private Git git;
+
+    private GitHubDownloader() {
+        // Initialize target dir
+        String appDataPath = System.getenv("APPDATA");
+        if (appDataPath == null) {
+            throw  new IllegalStateException("AppData not found");
+        }
+        targetDir = new File(appDataPath, ".MindSpace");
+        System.out.println(targetDir.getAbsolutePath());
+        // Initialize repo
         try {
-            //Clone repo if not cloned
-            File localRepo = new File(LOCAL_REPO_PATH);
-            if (!localRepo.exists()) {
-                Git.cloneRepository()
-                        .setURI(REPO_URL)
-                        .setDirectory(localRepo)
-                        .call();
-                System.out.println("Cloned repo successfully");
-            } else {
-                //If repo exists, pull the latest changes
-                Git.open(localRepo).pull().call();
-                System.out.println("Pulled latest changes");
+            if (targetDir.exists()) {
+                git= Git.open(targetDir);
             }
-            File repoJsonFile = new File(localRepo, "accounts.json");
-            File targetJsonFile = new File(LOCAL_JSON_PATH);
-            if (repoJsonFile.exists()) {
-                Files.copy(repoJsonFile.toPath(),
-                        targetJsonFile.toPath(),
-                        StandardCopyOption.REPLACE_EXISTING);
-                System.out.println("synced successfully.");
+        } catch (Exception e) {
+            System.err.println("Error initializing Git instance: " + e.getMessage());
+        }
+    }
+
+    public static GitHubDownloader getInstance() {
+        return instace;
+    }
+
+    public void download() {
+        try {
+            if (!targetDir.exists()) {
+                System.out.println("Cloning repo to " + targetDir.getAbsolutePath());
+                git = Git.cloneRepository().setURI(REPO_URL)
+                        .setDirectory(targetDir).call();
+                System.out.println("Repo cloned");
+            } else if (git != null){
+                System.out.println("pulling latest changes");
+                git.pull().call();
+                System.out.println("Repo updated");
             } else {
-                System.out.println("json not found in repo");
+                System.err.println("Git instance not initialized. Unable to pull");
             }
-        } catch (GitAPIException | java.io.IOException e) {
+        } catch (GitAPIException e) {
+            System.err.println("Error interacting with Git repo");
+            e.printStackTrace();
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

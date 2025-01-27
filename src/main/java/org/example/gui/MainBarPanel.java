@@ -1,6 +1,9 @@
 package org.example.gui;
 
 import org.example.bao.BAOFactory;
+import org.example.data.dao.AccountDAOImpl;
+import org.example.data.dao.GitHubDownloader;
+import org.example.data.dao.GitHubUploader;
 import org.example.data.dto.Account;
 
 import javax.swing.*;
@@ -120,6 +123,7 @@ public class MainBarPanel extends JPanel {
                     JOptionPane.WARNING_MESSAGE);
                 if (confirm == JOptionPane.OK_OPTION) {
                     mainFrame.showPage("WelcomePage");
+                    baoFactory.getDaoFactory().getAccountDAO().updateData();
                 }
             }
         });

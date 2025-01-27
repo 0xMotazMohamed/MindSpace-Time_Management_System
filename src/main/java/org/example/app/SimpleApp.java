@@ -10,7 +10,7 @@ import javax.swing.*;
 
 public class SimpleApp {
     public static void main(String[] args) {
-        GitHubDownloader.download();
+        GitHubDownloader.getInstance().download();
         //Load accounts on startup
         AccountDAOImpl.getInstance().loadAccounts();
 
@@ -25,8 +25,9 @@ public class SimpleApp {
 
         //Save when shutdown
         Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+            GitHubDownloader.getInstance().download();
             AccountDAOImpl.getInstance().saveAccounts();
-            GitHubUploader.upload();
+            GitHubUploader.getInstance().upload();
         }));
         try {
             UIManager.setLookAndFeel(new FlatMacLightLaf());

@@ -5,10 +5,11 @@ import org.example.data.dto.Account;
 import java.util.HashMap;
 
 public interface AccountDAO {
-    public void addAccount(Account account);
-    public void updateAccount(Account account);
-    public void deleteAccount(String email);
-    public Account getAccountByEmail(String email);
-    public HashMap<String, Account> getAccounts();
+    void addAccount(Account account);
+    void updateAccount(Account account);
+    void deleteAccount(String email);
+    Account getAccountByEmail(String email);
+    HashMap<String, Account> getAccounts();
+    void updateData();
 
 }
