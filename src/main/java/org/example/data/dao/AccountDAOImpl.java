@@ -59,6 +59,7 @@ public class AccountDAOImpl implements AccountDAO {
     public void saveAccounts() {
         try (FileWriter writer = new FileWriter(LOCAL_JSON_PATH)) {
             GSON.toJson(accounts, writer);
+
             System.out.println("accounts saved");
         } catch (IOException e) {
             System.err.println("Error saving accounts to file:" + e.getMessage());

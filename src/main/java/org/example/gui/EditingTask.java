@@ -62,12 +62,13 @@ public class EditingTask {
         }
         panel.add(priorityDropdown, gbc);
 
-        int taskOption = JOptionPane.showConfirmDialog(null, panel,
-                "Edit Task Details", JOptionPane.OK_CANCEL_OPTION,JOptionPane.PLAIN_MESSAGE);
+        Object[] options = {"Confirm Changes", "Delete Task", "Cancel"};
+        int taskOption = JOptionPane.showOptionDialog(null,
+                panel, "Edit Task Details", JOptionPane.DEFAULT_OPTION,
+                JOptionPane.PLAIN_MESSAGE, null, options, options[0]);
 
-        if (taskOption == JOptionPane.OK_OPTION) {
+        if (taskOption == 0) {
             if (!titleField.getText().isEmpty()) {
-
                 if (Objects.requireNonNull(statusDropdown.getSelectedItem()).equals("To Do")) {
                     project.transferTask(task, project.getTasksByStatus(task.getStatus().getStatus()),
                             project.getToDoTasks());
@@ -78,8 +79,6 @@ public class EditingTask {
                     project.transferTask(task, project.getTasksByStatus(task.getStatus().getStatus()),
                             project.getCompletedTasks());
                 }
-
-
                 if (Objects.requireNonNull(priorityDropdown.getSelectedItem()).equals("High")) {
                     task.setPriority("High");
                 } else if (Objects.requireNonNull(priorityDropdown.getSelectedItem()).equals("Medium")) {
@@ -93,6 +92,38 @@ public class EditingTask {
                         "Error", JOptionPane.ERROR_MESSAGE);
                 editTask(project, task);
             }
+        } else if (taskOption == 1) {
+            project.deleteTask(task, project.getTasksByStatus(task.getStatus().getStatus()));
         }
+
+//        if (taskOption == JOptionPane.OK_OPTION) {
+//            if (!titleField.getText().isEmpty()) {
+//
+//                if (Objects.requireNonNull(statusDropdown.getSelectedItem()).equals("To Do")) {
+//                    project.transferTask(task, project.getTasksByStatus(task.getStatus().getStatus()),
+//                            project.getToDoTasks());
+//                } else if (Objects.requireNonNull(statusDropdown.getSelectedItem()).equals("In Progress")) {
+//                    project.transferTask(task, project.getTasksByStatus(task.getStatus().getStatus()),
+//                            project.getInProgressTasks());
+//                } else if (Objects.requireNonNull(statusDropdown.getSelectedItem()).equals("Completed")){
+//                    project.transferTask(task, project.getTasksByStatus(task.getStatus().getStatus()),
+//                            project.getCompletedTasks());
+//                }
+//
+//
+//                if (Objects.requireNonNull(priorityDropdown.getSelectedItem()).equals("High")) {
+//                    task.setPriority("High");
+//                } else if (Objects.requireNonNull(priorityDropdown.getSelectedItem()).equals("Medium")) {
+//                    task.setPriority("Medium");
+//                } else {
+//                    task.setPriority("Low");
+//                }
+//                task.setTitle(titleField.getText().trim());
+//            } else {
+//                JOptionPane.showConfirmDialog(null, "Please, Enter title for the task.",
+//                        "Error", JOptionPane.ERROR_MESSAGE);
+//                editTask(project, task);
+//            }
+//        }
     }
 }

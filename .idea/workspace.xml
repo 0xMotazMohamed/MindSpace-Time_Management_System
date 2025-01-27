@@ -4,17 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="53b98d1d-46f6-4149-99dc-d0828fbc947e" name="Changes" comment="1/25 10:24">
+    <list default="true" id="53b98d1d-46f6-4149-99dc-d0828fbc947e" name="Changes" comment="1/27 4:57">
       <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/app/SimpleApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/app/SimpleApp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/data/dao/AccountDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/data/dao/AccountDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/data/dao/AccountDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/data/dao/AccountDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/data/dao/GitHubDownloader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/data/dao/GitHubDownloader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/data/dao/GitHubUploader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/data/dao/GitHubUploader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/gui/MainBarPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/gui/MainBarPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/gui/SettingsPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/gui/SettingsPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/accounts.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/accounts.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/gui/EditingTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/gui/EditingTask.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -113,6 +107,9 @@
       <workItem from="1737958326865" duration="4503000" />
       <workItem from="1737977924928" duration="67000" />
       <workItem from="1737980049644" duration="884000" />
+      <workItem from="1737989738625" duration="579000" />
+      <workItem from="1737990491330" duration="227000" />
+      <workItem from="1737999095855" duration="1440000" />
     </task>
     <task id="LOCAL-00001" summary="1/25 10:23">
       <option name="closed" value="true" />
@@ -130,7 +127,23 @@
       <option name="project" value="LOCAL" />
       <updated>1737793447347</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="1/27 4:57">
+      <option name="closed" value="true" />
+      <created>1737989863287</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1737989863287</updated>
+    </task>
+    <task id="LOCAL-00004" summary="1/27 4:57">
+      <option name="closed" value="true" />
+      <created>1737989914963</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1737989914963</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -139,6 +152,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="1/25 10:23" />
     <MESSAGE value="1/25 10:24" />
-    <option name="LAST_COMMIT_MESSAGE" value="1/25 10:24" />
+    <MESSAGE value="1/27 4:57" />
+    <option name="LAST_COMMIT_MESSAGE" value="1/27 4:57" />
   </component>
 </project>
