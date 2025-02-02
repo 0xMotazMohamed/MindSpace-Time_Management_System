@@ -29,7 +29,7 @@ Unlike conventional task management tools, MindSpace is **lightweight, user-frie
 
 - ⏳ **Pomodoro Timer:** Improve focus and efficiency with time tracking.
 
-<img src="https://github.com/0xMotazMohamed/MindSpace-Time_Management_System/blob/main/Pomodoro.jpg?raw=true" alt="MindSpace Pomodoro" width="600" height="600">
+<img src="https://github.com/0xMotazMohamed/MindSpace-Time_Management_System/blob/main/Pomodoro.jpg?raw=true" alt="MindSpace Pomodoro" width="800" height="600">
 
 - 📊 **Dashboard Analytics:** Monitor completed and pending tasks.
 
