@@ -4,7 +4,7 @@
 - [Overview](#overview)  
 - [Features](#features)  
 - [Usage](#usage)  
-- [Task Management](#task-management)  
+- [Team](#team)  
 - [Time Tracking](#time-tracking)  
 - [User Dashboard](#user-dashboard)   
 
@@ -43,20 +43,9 @@ Users can:
 ✔️ Delete completed or unnecessary tasks.
 ✔️ Sort tasks by priority or due date.
 
-## **Time Tracking**  
-The Pomodoro Timer helps users break tasks into manageable work intervals, improving focus and reducing burnout.
-
-The timer follows a 25-minute work / 5-minute break cycle, but users can customize time intervals based on their preference.
-
-## **User Dashboard**  
-The Dashboard offers an overview of user progress, including:
-
-📌 Upcoming tasks with deadlines.
-📈 Completed vs. pending tasks for performance tracking.
-⏳ Total time spent on tasks.
-Future updates will include detailed analytics and reports for better time optimization.
-Contributors
-We appreciate the contributions of our dedicated team:
-
+## **Team**  
+- **[@MotazMohamed](https://github.com/0xMotazMohamed)** – BackEnd Developer  
+- **[@AbdullaMostafa](https://github.com/AbdullahMostafa24)** – UI Designer  
+- **[@YousefWahba](https://github.com/yousefiwahba)** – Features Creator  
 
 
