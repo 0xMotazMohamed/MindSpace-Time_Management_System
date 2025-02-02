@@ -25,15 +25,15 @@ Unlike conventional task management tools, MindSpace is **lightweight, user-frie
 ## **Features**  
 - ✅ **Task Scheduling:** Create, edit, and manage tasks with priority levels.
 
-<img src="https://github.com/0xMotazMohamed/MindSpace-Time_Management_System/blob/main/Project%20Creation.jpg?raw=true" alt="MindSpace Project Creation" width="500" height="500">
+<img src="https://github.com/0xMotazMohamed/MindSpace-Time_Management_System/blob/main/Project%20Creation.jpg?raw=true" alt="MindSpace Project Creation" width="250" height="250">
 
 - ⏳ **Pomodoro Timer:** Improve focus and efficiency with time tracking.
 
-<img src="https://github.com/0xMotazMohamed/MindSpace-Time_Management_System/blob/main/Pomodoro.jpg?raw=true" alt="MindSpace Pomodoro" width="1000" height="1000">
+<img src="https://github.com/0xMotazMohamed/MindSpace-Time_Management_System/blob/main/Pomodoro.jpg?raw=true" alt="MindSpace Pomodoro" width="600" height="600">
 
 - 📊 **Dashboard Analytics:** Monitor completed and pending tasks.
 
-<img src="https://github.com/0xMotazMohamed/MindSpace-Time_Management_System/blob/main/Interface.jpg?raw=true" alt="MindSpace Interface" width="1000" height="1000">
+<img src="https://github.com/0xMotazMohamed/MindSpace-Time_Management_System/blob/main/Interface.jpg?raw=true" alt="MindSpace Interface" width="600" height="600">
 
 ---
 ## **Usage**  
