@@ -1,0 +1,6 @@
+Manifest-Version: 1.0
+Main-Class: org.example.app.SimpleApp
+Class-Path: flatlaf-3.5.4.jar JavaEWAH-1.2.3.jar org.eclipse.jgit-7.1.0.
+ 202411261347-r.jar error_prone_annotations-2.27.0.jar commons-codec-1.1
+ 7.1.jar gson-2.11.0.jar slf4j-simple-2.0.16.jar slf4j-api-2.0.16.jar
+

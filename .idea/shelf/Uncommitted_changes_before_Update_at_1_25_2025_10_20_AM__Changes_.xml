@@ -1,0 +1,34 @@
+<changelist name="Uncommitted_changes_before_Update_at_1_25_2025_10_20_AM_[Changes]" date="1737793211134" recycled="true" deleted="true">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_25_2025_10_20_AM_[Changes]/shelved.patch" />
+  <option name="DESCRIPTION" value="Uncommitted changes before Update at 1/25/2025 10:20 AM [Changes]" />
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/MindSpace-Time_Management_System/GUI/SignUpPanel.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/MindSpace-Time_Management_System/GUI/WelcomePanel.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/MindSpace-Time_Management_System/StartUp/Account$Gender.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/MindSpace-Time_Management_System/StartUp/Data.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/MindSpace-Time_Management_System/GUI/MainFrame.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/MindSpace-Time_Management_System/Main.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/MindSpace-Time_Management_System/StartUp/SignIn.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/MindSpace-Time_Management_System/GUI/SignInPanel.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/MindSpace-Time_Management_System/StartUp/SignUp.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/MindSpace-Time_Management_System/StartUp/Account.class" />
+  </binary>
+</changelist>

@@ -1,0 +1,1294 @@
+Index: MindSpace/.idea/misc.xml
+===================================================================
+diff --git a/MindSpace/.idea/misc.xml b/MindSpace/.idea/misc.xml
+deleted file mode 100644
+--- a/MindSpace/.idea/misc.xml	(revision ea38bc1815d6de47f1ef4c62aa0f49df8e04e60c)
++++ /dev/null	(revision ea38bc1815d6de47f1ef4c62aa0f49df8e04e60c)
+@@ -1,6 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<project version="4">
+-  <component name="ProjectRootManager" version="2" languageLevel="JDK_21" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+-    <output url="file://$PROJECT_DIR$/out" />
+-  </component>
+-</project>
+\ No newline at end of file
+Index: MindSpace/.idea/modules.xml
+===================================================================
+diff --git a/MindSpace/.idea/modules.xml b/MindSpace/.idea/modules.xml
+deleted file mode 100644
+--- a/MindSpace/.idea/modules.xml	(revision ea38bc1815d6de47f1ef4c62aa0f49df8e04e60c)
++++ /dev/null	(revision ea38bc1815d6de47f1ef4c62aa0f49df8e04e60c)
+@@ -1,8 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<project version="4">
+-  <component name="ProjectModuleManager">
+-    <modules>
+-      <module fileurl="file://$PROJECT_DIR$/MindSpace.iml" filepath="$PROJECT_DIR$/MindSpace.iml" />
+-    </modules>
+-  </component>
+-</project>
+\ No newline at end of file
+Index: MindSpace/.idea/vcs.xml
+===================================================================
+diff --git a/MindSpace/.idea/vcs.xml b/MindSpace/.idea/vcs.xml
+deleted file mode 100644
+--- a/MindSpace/.idea/vcs.xml	(revision ea38bc1815d6de47f1ef4c62aa0f49df8e04e60c)
++++ /dev/null	(revision ea38bc1815d6de47f1ef4c62aa0f49df8e04e60c)
+@@ -1,6 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<project version="4">
+-  <component name="VcsDirectoryMappings">
+-    <mapping directory="$PROJECT_DIR$/.." vcs="Git" />
+-  </component>
+-</project>
+\ No newline at end of file
+Index: MindSpace/src/StartUp/SignUp.java
+===================================================================
+diff --git a/MindSpace/src/StartUp/SignUp.java b/MindSpace/src/StartUp/SignUp.java
+deleted file mode 100644
+--- a/MindSpace/src/StartUp/SignUp.java	(revision ea38bc1815d6de47f1ef4c62aa0f49df8e04e60c)
++++ /dev/null	(revision ea38bc1815d6de47f1ef4c62aa0f49df8e04e60c)
+@@ -1,58 +0,0 @@
+-package StartUp;
+-
+-public class SignUp {
+-    public static String checkUsername(String username) {
+-        if (username == null || username.trim().isEmpty()) {
+-            throw new IllegalArgumentException("Username cannot be null or empty.");
+-        }
+-
+-        username = username.trim();
+-
+-        if (username.length() < 5 || username.length() > 15) {
+-            throw new IllegalArgumentException("Username must be between 5 and 15 characters long.");
+-        }
+-
+-        if (!username.matches("^[a-zA-Z0-9]+$")) {
+-            throw new IllegalArgumentException("Username can only contain alphanumeric characters.");
+-        }
+-
+-        return username;
+-    }
+-
+-    public static String checkEmail(String email) {
+-        if (email == null || email.trim().isEmpty()) {
+-            throw new IllegalArgumentException("Email cannot be null or empty.");
+-        }
+-
+-        email = email.trim().toLowerCase();
+-
+-        if (!email.contains("@")) {
+-            throw new IllegalArgumentException("Email must contain '@'.");
+-        }
+-
+-        if (!email.endsWith(".com")) {
+-            throw new IllegalArgumentException("Email must end with '.com'.");
+-        }
+-
+-        return email;
+-    }
+-
+-    public static String checkPassword(String password) {
+-        if (password == null || password.isEmpty()) {
+-            throw new IllegalArgumentException("Password cannot be null or empty.");
+-        }
+-
+-        if (password.length() < 8) {
+-            throw new IllegalArgumentException("Password must be at least 8 characters long.");
+-        }
+-
+-        boolean hasUppercase = password.chars().anyMatch(Character::isUpperCase);
+-        boolean hasDigit = password.chars().anyMatch(Character::isDigit);
+-
+-        if (!hasUppercase || !hasDigit) {
+-            throw new IllegalArgumentException("Password must contain at least one uppercase letter and one digit.");
+-        }
+-
+-        return password;
+-    }
+-}
+\ No newline at end of file
+Index: MindSpace/src/StartUp/SignUpInterface.java
+===================================================================
+diff --git a/MindSpace/src/StartUp/SignUpInterface.java b/MindSpace/src/StartUp/SignUpInterface.java
+deleted file mode 100644
+--- a/MindSpace/src/StartUp/SignUpInterface.java	(revision ea38bc1815d6de47f1ef4c62aa0f49df8e04e60c)
++++ /dev/null	(revision ea38bc1815d6de47f1ef4c62aa0f49df8e04e60c)
+@@ -1,31 +0,0 @@
+-package StartUp;
+-
+-public interface SignUpInterface {
+-
+-    /**
+-     * returns: 0 if (empty)
+-     * returns: -1 if (not between 5-15 characters long) or (contain not ahphanumeric character)
+-     * returns: 1 if (accepted)
+-     */
+-    public byte checkUsername(String username);
+-
+-
+-    /**
+-     * returns: 0 if (empty)
+-     * returns: -1 if (not contain @, .com)
+-     * returns: 1 if (accepted)
+-     */
+-    public byte checkEmail(String email);
+-
+-
+-    /**
+-     * returns: 0 if (empty)
+-     * returns: -1 if (less than 8 characters long) or (not contain uppercase letter and digit)
+-     * returns: 1 if (accepted)
+-     */
+-    public byte checkPassword(String password);
+-
+-
+-
+-    public byte SignUp(String username, String email, String password);
+-}
+Index: MindSpace-Time_Management_System.iml
+===================================================================
+diff --git a/MindSpace-Time_Management_System.iml b/MindSpace-Time_Management_System.iml
+deleted file mode 100644
+--- a/MindSpace-Time_Management_System.iml	(revision ea38bc1815d6de47f1ef4c62aa0f49df8e04e60c)
++++ /dev/null	(revision ea38bc1815d6de47f1ef4c62aa0f49df8e04e60c)
+@@ -1,11 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<module type="JAVA_MODULE" version="4">
+-  <component name="NewModuleRootManager" inherit-compiler-output="true">
+-    <exclude-output />
+-    <content url="file://$MODULE_DIR$">
+-      <sourceFolder url="file://$MODULE_DIR$/MindSpace/src" isTestSource="false" />
+-    </content>
+-    <orderEntry type="inheritedJdk" />
+-    <orderEntry type="sourceFolder" forTests="false" />
+-  </component>
+-</module>
+\ No newline at end of file
+Index: .idea/.gitignore
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/.gitignore b/.idea/.gitignore
+deleted file mode 100644
+--- a/.idea/.gitignore	(revision ea38bc1815d6de47f1ef4c62aa0f49df8e04e60c)
++++ /dev/null	(revision ea38bc1815d6de47f1ef4c62aa0f49df8e04e60c)
+@@ -1,3 +0,0 @@
+-# Default ignored files
+-/shelf/
+-/workspace.xml
+Index: MindSpace/src/StartUp/Data.java
+===================================================================
+diff --git a/MindSpace/src/StartUp/Data.java b/MindSpace/src/StartUp/Data.java
+deleted file mode 100644
+--- a/MindSpace/src/StartUp/Data.java	(revision ea38bc1815d6de47f1ef4c62aa0f49df8e04e60c)
++++ /dev/null	(revision ea38bc1815d6de47f1ef4c62aa0f49df8e04e60c)
+@@ -1,25 +0,0 @@
+-package StartUp;
+-
+-import java.util.HashMap;
+-
+-public class Data {
+-
+-    private static HashMap<String, String> map;
+-
+-    public static void setMap() {
+-
+-        Account A = new Account("Abdullah Mostafa", "abdullah@gmail.com", "Programmer1", Account.Gender.Male);
+-        Account M = new Account("Moataz Mohamed", "moataz@gmail.com", "Programmer2", Account.Gender.Male);
+-        Account W = new Account("Youssef Wahba", "youssef@gmail.com", "Programmer3", Account.Gender.Male);
+-
+-        map = new HashMap<>();
+-
+-        map.put(A.getEmail(), A.getPassword());
+-        map.put(M.getEmail(), M.getPassword());
+-        map.put(W.getEmail(), W.getPassword());
+-    }
+-
+-    public static HashMap<String, String> getMap() {
+-        return map;
+-    }
+-}
+Index: MindSpace/src/GUI/MainFrame.java
+===================================================================
+diff --git a/MindSpace/src/GUI/MainFrame.java b/MindSpace/src/GUI/MainFrame.java
+deleted file mode 100644
+--- a/MindSpace/src/GUI/MainFrame.java	(revision ea38bc1815d6de47f1ef4c62aa0f49df8e04e60c)
++++ /dev/null	(revision ea38bc1815d6de47f1ef4c62aa0f49df8e04e60c)
+@@ -1,30 +0,0 @@
+-package GUI;
+-
+-import javax.swing.*;
+-import java.awt.*;
+-
+-public class MainFrame extends JFrame {
+-    private CardLayout cardLayout;
+-    private JPanel mainPanel;
+-
+-    public MainFrame() {
+-        setTitle("Time Management");
+-        setSize(736, 759);
+-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+-
+-        cardLayout = new CardLayout();
+-        mainPanel = new JPanel(cardLayout);
+-
+-        mainPanel.add(new WelcomePanel(this), "WelcomePage");
+-        mainPanel.add(new SignInPanel(this), "SignInPage");
+-        mainPanel.add(new SignUpPanel(this), "SignUpPage");
+-
+-        add(mainPanel);
+-        setResizable(false);
+-        setVisible(true);
+-    }
+-
+-    public void showPage(String pageName) {
+-        cardLayout.show(mainPanel, pageName);
+-    }
+-}
+Index: MindSpace/.idea/.gitignore
+===================================================================
+diff --git a/MindSpace/.idea/.gitignore b/MindSpace/.idea/.gitignore
+deleted file mode 100644
+--- a/MindSpace/.idea/.gitignore	(revision ea38bc1815d6de47f1ef4c62aa0f49df8e04e60c)
++++ /dev/null	(revision ea38bc1815d6de47f1ef4c62aa0f49df8e04e60c)
+@@ -1,3 +0,0 @@
+-# Default ignored files
+-/shelf/
+-/workspace.xml
+Index: MindSpace/MindSpace.iml
+===================================================================
+diff --git a/MindSpace/MindSpace.iml b/MindSpace/MindSpace.iml
+deleted file mode 100644
+--- a/MindSpace/MindSpace.iml	(revision ea38bc1815d6de47f1ef4c62aa0f49df8e04e60c)
++++ /dev/null	(revision ea38bc1815d6de47f1ef4c62aa0f49df8e04e60c)
+@@ -1,11 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<module type="JAVA_MODULE" version="4">
+-  <component name="NewModuleRootManager" inherit-compiler-output="true">
+-    <exclude-output />
+-    <content url="file://$MODULE_DIR$">
+-      <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
+-    </content>
+-    <orderEntry type="inheritedJdk" />
+-    <orderEntry type="sourceFolder" forTests="false" />
+-  </component>
+-</module>
+\ No newline at end of file
+Index: MindSpace/src/Main.java
+===================================================================
+diff --git a/MindSpace/src/Main.java b/MindSpace/src/Main.java
+deleted file mode 100644
+--- a/MindSpace/src/Main.java	(revision ea38bc1815d6de47f1ef4c62aa0f49df8e04e60c)
++++ /dev/null	(revision ea38bc1815d6de47f1ef4c62aa0f49df8e04e60c)
+@@ -1,16 +0,0 @@
+-import GUI.MainFrame;
+-import StartUp.Data;
+-
+-import javax.swing.*;
+-
+-public class Main {
+-    public static void main(String[] args) {
+-        System.out.println("Hello world!");
+-        System.out.println("Test");
+-        Data.setMap();
+-//        Window.WelcomeDisplay();
+-
+-        SwingUtilities.invokeLater(MainFrame::new);
+-
+-        }
+-}
+\ No newline at end of file
+Index: MindSpace/src/StartUp/Account.java
+===================================================================
+diff --git a/MindSpace/src/StartUp/Account.java b/MindSpace/src/StartUp/Account.java
+deleted file mode 100644
+--- a/MindSpace/src/StartUp/Account.java	(revision ea38bc1815d6de47f1ef4c62aa0f49df8e04e60c)
++++ /dev/null	(revision ea38bc1815d6de47f1ef4c62aa0f49df8e04e60c)
+@@ -1,39 +0,0 @@
+-package StartUp;
+-
+-import java.util.HashMap;
+-
+-public class Account {
+-
+-    public enum Gender {
+-        Male, Female
+-    }
+-
+-    private String name;
+-    private String email;
+-    private String password;
+-    private Gender gender;
+-    private static HashMap<String, Account> accounts = new HashMap<>();
+-
+-    public Account(String name, String email, String password, Gender gender) {
+-        this.name = name;
+-        this.email = email;
+-        this.password = password;
+-        this.gender = gender;
+-    }
+-    public static void registerAccount(String name, String email, String password, Gender gender) {
+-        if (accounts.containsKey(email)) {
+-            throw new IllegalArgumentException("An account with this email already exists.");
+-        }
+-        Account account = new Account(name, email, password, gender);
+-        account.name= SignUp.checkUsername(account.name);
+-        account.email= SignUp.checkEmail(account.email);
+-        account.password= SignUp.checkPassword(account.password);
+-        accounts.put(email, account);
+-    }
+-    public static Account getAccountByEmail(String email) {
+-        return accounts.get(email);
+-    }
+-
+-    public String getEmail() {return email;}
+-    public String getPassword() {return password;}
+-}
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+deleted file mode 100644
+--- a/.idea/misc.xml	(revision ea38bc1815d6de47f1ef4c62aa0f49df8e04e60c)
++++ /dev/null	(revision ea38bc1815d6de47f1ef4c62aa0f49df8e04e60c)
+@@ -1,6 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<project version="4">
+-  <component name="ProjectRootManager" version="2" languageLevel="JDK_22" default="true" project-jdk-name="22" project-jdk-type="JavaSDK">
+-    <output url="file://$PROJECT_DIR$/out" />
+-  </component>
+-</project>
+\ No newline at end of file
+Index: MindSpace/.idea/checkstyle-idea.xml
+===================================================================
+diff --git a/MindSpace/.idea/checkstyle-idea.xml b/MindSpace/.idea/checkstyle-idea.xml
+deleted file mode 100644
+--- a/MindSpace/.idea/checkstyle-idea.xml	(revision ea38bc1815d6de47f1ef4c62aa0f49df8e04e60c)
++++ /dev/null	(revision ea38bc1815d6de47f1ef4c62aa0f49df8e04e60c)
+@@ -1,16 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<project version="4">
+-  <component name="CheckStyle-IDEA" serialisationVersion="2">
+-    <checkstyleVersion>10.17.0</checkstyleVersion>
+-    <scanScope>JavaOnly</scanScope>
+-    <copyLibs>true</copyLibs>
+-    <option name="thirdPartyClasspath" />
+-    <option name="activeLocationIds" />
+-    <option name="locations">
+-      <list>
+-        <ConfigurationLocation id="bundled-sun-checks" type="BUNDLED" scope="All" description="Sun Checks">(bundled)</ConfigurationLocation>
+-        <ConfigurationLocation id="bundled-google-checks" type="BUNDLED" scope="All" description="Google Checks">(bundled)</ConfigurationLocation>
+-      </list>
+-    </option>
+-  </component>
+-</project>
+\ No newline at end of file
+Index: MindSpace/src/StartUp/SignIn.java
+===================================================================
+diff --git a/MindSpace/src/StartUp/SignIn.java b/MindSpace/src/StartUp/SignIn.java
+deleted file mode 100644
+--- a/MindSpace/src/StartUp/SignIn.java	(revision ea38bc1815d6de47f1ef4c62aa0f49df8e04e60c)
++++ /dev/null	(revision ea38bc1815d6de47f1ef4c62aa0f49df8e04e60c)
+@@ -1,33 +0,0 @@
+-package StartUp;
+-
+-public class SignIn {
+-    private static byte checkEmail(String email) {
+-        if (email.isEmpty()) {
+-            return 0;
+-        }else if (Data.getMap().containsKey(email)) {
+-            return 1;
+-        }else {
+-            return -1;
+-        }
+-    }
+-
+-    private static byte checkPassword(String email, String password) {
+-        if (password.isEmpty()) {
+-            return 0;
+-        }else if (Data.getMap().containsKey(email) && Data.getMap().get(email).equals(password)) {
+-            return 1;
+-        }else {
+-            return -1;
+-        }
+-    }
+-
+-    public static byte logIn(String email, String password) {
+-        byte e = checkEmail(email);
+-        byte p = checkPassword(email, password);
+-        if (e == 0) return 10;
+-        else if (p == 0) return 20;
+-        else if (e == -1) return 9;
+-        else if (p == -1) return 19;
+-        else return 0;
+-    }
+-}
+\ No newline at end of file
+Index: MindSpace/src/GUI/SignUpPanel.java
+===================================================================
+diff --git a/MindSpace/src/GUI/SignUpPanel.java b/MindSpace/src/GUI/SignUpPanel.java
+deleted file mode 100644
+--- a/MindSpace/src/GUI/SignUpPanel.java	(revision ea38bc1815d6de47f1ef4c62aa0f49df8e04e60c)
++++ /dev/null	(revision ea38bc1815d6de47f1ef4c62aa0f49df8e04e60c)
+@@ -1,259 +0,0 @@
+-package GUI;
+-
+-import javax.swing.*;
+-import java.awt.*;
+-import java.awt.event.MouseAdapter;
+-import java.awt.event.MouseEvent;
+-
+-import StartUp.SignIn;
+-
+-public class SignUpPanel extends JPanel {
+-    public SignUpPanel(MainFrame mainFrame) {
+-        setLayout(null);
+-
+-        JButton signUpButton = new JButton("Sign Up");
+-        JButton resetButton = new JButton("Reset");
+-        JTextField usernameField = new JTextField();
+-        JTextField emailField = new JTextField();
+-        JPasswordField passwordField = new JPasswordField();
+-        JLabel usernameLabel = new JLabel("Username:");
+-        JLabel emailLabel = new JLabel("Email:");
+-        JLabel passwordLabel = new JLabel("Password:");
+-        JLabel titleLabel = new JLabel("Sign Up");
+-        JLabel errorLabel = new JLabel("");
+-        JLabel signInLabel = new JLabel("<html><u>Have email Already? SignIn.</u></html>");
+-
+-        Font titleFont = new Font(null, Font.BOLD, 48);
+-        Font textFont = new Font(null, Font.PLAIN, 24);
+-        Font inputFont = new Font(null, Font.PLAIN, 16);
+-        Font instructorFont = new Font(null, Font.BOLD, 12);
+-        Font errorFont = new Font(null, Font.BOLD, 12);
+-        Font linkFont = new Font(null, Font.PLAIN, 12);
+-
+-        Dimension labelSize;
+-        int x;
+-
+-        titleLabel.setFont(titleFont);
+-        labelSize = titleLabel.getPreferredSize();
+-        titleLabel.setBounds(360 - (labelSize.width/2), 100, labelSize.width, labelSize.height);
+-
+-        usernameLabel.setFont(textFont);
+-        labelSize = usernameLabel.getPreferredSize();
+-        x = 360 - (labelSize.width + 20 + 220) / 2;
+-        usernameLabel.setBounds(x, 200, labelSize.width, labelSize.height);
+-
+-        passwordLabel.setFont(textFont);
+-        labelSize = passwordLabel.getPreferredSize();
+-        passwordLabel.setBounds(x, 340, labelSize.width, labelSize.height);
+-
+-        emailLabel.setFont(textFont);
+-        labelSize = emailLabel.getPreferredSize();
+-        emailLabel.setBounds(x, 270, labelSize.width, labelSize.height);
+-
+-
+-        usernameField.setFont(instructorFont);
+-        usernameField.setBackground(Color.LIGHT_GRAY);
+-        usernameField.setText("Username");
+-        usernameField.setForeground(Color.GRAY);
+-        usernameField.setBounds(x + (usernameLabel.getWidth() + 20), 202, 220, 32);
+-        usernameField.setFocusable(false);
+-        usernameField.addMouseListener(new MouseAdapter() {
+-            @Override
+-            public void mouseClicked(MouseEvent e) {
+-                usernameField.setFont(inputFont);
+-                usernameField.setText("");
+-                usernameField.setBackground(Color.white);
+-                usernameField.setForeground(null);
+-                usernameField.setFocusable(true);
+-                usernameField.grabFocus();
+-                if (emailField.getText().isEmpty()) {
+-                    emailField.setFont(instructorFont);
+-                    emailField.setBackground(Color.LIGHT_GRAY);
+-                    emailField.setText("example@gmail.com");
+-                    emailField.setForeground(Color.GRAY);
+-                    emailField.setFocusable(false);
+-                }
+-                if (passwordField.getText().isEmpty()) {
+-                    passwordField.setFont(instructorFont);
+-                    passwordField.setBackground(Color.LIGHT_GRAY);
+-                    passwordField.setText("123456789");
+-                    passwordField.setForeground(Color.GRAY);
+-                    passwordField.setFocusable(false);
+-                }
+-            }
+-        });
+-
+-        emailField.setFont(instructorFont);
+-        emailField.setBackground(Color.LIGHT_GRAY);
+-        emailField.setText("example@gmail.com");
+-        emailField.setForeground(Color.GRAY);
+-        emailField.setBounds(usernameField.getX(), 272, 220, 32);
+-        emailField.setFocusable(false);
+-        emailField.addMouseListener(new MouseAdapter() {
+-            @Override
+-            public void mouseClicked(MouseEvent e) {
+-                emailField.setFont(inputFont);
+-                emailField.setText("");
+-                emailField.setBackground(Color.white);
+-                emailField.setForeground(null);
+-                emailField.setFocusable(true);
+-                emailField.grabFocus();
+-                if (usernameField.getText().isEmpty()) {
+-                    usernameField.setFont(instructorFont);
+-                    usernameField.setBackground(Color.LIGHT_GRAY);
+-                    usernameField.setText("Username");
+-                    usernameField.setForeground(Color.GRAY);
+-                    usernameField.setFocusable(false);
+-                }
+-                if (passwordField.getText().isEmpty()) {
+-                    passwordField.setFont(instructorFont);
+-                    passwordField.setBackground(Color.LIGHT_GRAY);
+-                    passwordField.setText("123456789");
+-                    passwordField.setForeground(Color.GRAY);
+-                    passwordField.setFocusable(false);
+-                }
+-            }
+-        });
+-
+-
+-        passwordField.setFont(instructorFont);
+-        passwordField.setBackground(Color.LIGHT_GRAY);
+-        passwordField.setText("123456789");
+-        passwordField.setForeground(Color.GRAY);
+-        passwordField.setBounds(usernameField.getX(), 342, 220, 32);
+-        passwordField.setFocusable(false);
+-        passwordField.addMouseListener(new MouseAdapter() {
+-            @Override
+-            public void mouseClicked(MouseEvent e) {
+-                passwordField.setFont(inputFont);
+-                passwordField.setText("");
+-                passwordField.setBackground(Color.white);
+-                passwordField.setForeground(null);
+-                passwordField.setFocusable(true);
+-                passwordField.grabFocus();
+-                if (usernameField.getText().isEmpty()) {
+-                    usernameField.setFont(instructorFont);
+-                    usernameField.setBackground(Color.LIGHT_GRAY);
+-                    usernameField.setText("Username");
+-                    usernameField.setForeground(Color.GRAY);
+-                    usernameField.setFocusable(false);
+-                }
+-                if (emailField.getText().isEmpty()) {
+-                    emailField.setFont(instructorFont);
+-                    emailField.setBackground(Color.LIGHT_GRAY);
+-                    emailField.setText("example@gmail.com");
+-                    emailField.setForeground(Color.GRAY);
+-                    emailField.setFocusable(false);
+-                }
+-            }
+-        });
+-
+-        errorLabel.setFont(errorFont);
+-        errorLabel.setBounds(usernameField.getX(), 220, 300, 50);
+-        errorLabel.setForeground(Color.red);
+-
+-        signUpButton.setFont(inputFont);
+-        signUpButton.setBounds(240, 410, 100, 30);
+-        signUpButton.setFocusable(false);
+-        signUpButton.addActionListener(e -> {
+-            if (e.getSource() == signUpButton) {
+-                String Email = emailField.getText().toLowerCase();
+-                String Password = String.valueOf(passwordField.getPassword());
+-
+-                switch (SignIn.logIn(Email, Password)) {
+-                    case 10:
+-                        errorLabel.setLocation(errorLabel.getX(), 290);
+-                        errorLabel.setText("* Username must not be Empty");
+-                        break;
+-                    case 20:
+-                        errorLabel.setLocation(errorLabel.getX(), 360);
+-                        errorLabel.setText("* Email must not be Empty");
+-                        break;
+-                    case 30:
+-                        errorLabel.setLocation(errorLabel.getX(), 220);
+-                        errorLabel.setText("* Password must not be Empty");
+-                        break;
+-                    case 9:
+-                        errorLabel.setLocation(errorLabel.getX(), 290);
+-                        errorLabel.setText("* Wrong Username");
+-                        break;
+-                    case 19:
+-                        errorLabel.setLocation(errorLabel.getX(), 360);
+-                        errorLabel.setText("* Wrong Email");
+-                        break;
+-                    case 29:
+-                        errorLabel.setLocation(errorLabel.getX(), 220);
+-                        errorLabel.setText("* Wrong Password");
+-                    default:
+-                        errorLabel.setText("");
+-                        System.out.println("Well Done");
+-                }
+-            }
+-        });
+-
+-
+-        resetButton.setFont(inputFont);
+-        resetButton.setBounds(380, 410, 100, 30);
+-        resetButton.setFocusable(false);
+-        resetButton.addActionListener(e -> {
+-            if (e.getSource() == resetButton) {
+-                usernameField.setFont(instructorFont);
+-                usernameField.setBackground(Color.LIGHT_GRAY);
+-                usernameField.setText("Username");
+-                usernameField.setForeground(Color.GRAY);
+-                usernameField.setFocusable(false);
+-                emailField.setFont(instructorFont);
+-                emailField.setBackground(Color.LIGHT_GRAY);
+-                emailField.setText("example@gmail.com");
+-                emailField.setForeground(Color.GRAY);
+-                emailField.setFocusable(false);
+-                passwordField.setFont(instructorFont);
+-                passwordField.setBackground(Color.LIGHT_GRAY);
+-                passwordField.setText("123456789");
+-                passwordField.setForeground(Color.GRAY);
+-                passwordField.setFocusable(false);
+-                errorLabel.setText("");
+-            }
+-        });
+-
+-        signInLabel.setFont(linkFont);
+-        signInLabel.setForeground(new Color(0,107,255));
+-        signInLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
+-        signInLabel.addMouseListener(new MouseAdapter() {
+-            @Override
+-            public void mouseClicked(MouseEvent e) {
+-                mainFrame.showPage("SignInPage");
+-                usernameField.setFont(instructorFont);
+-                usernameField.setBackground(Color.LIGHT_GRAY);
+-                usernameField.setText("Username");
+-                usernameField.setForeground(Color.GRAY);
+-                usernameField.setFocusable(false);
+-                emailField.setFont(instructorFont);
+-                emailField.setBackground(Color.LIGHT_GRAY);
+-                emailField.setText("example@gmail.com");
+-                emailField.setForeground(Color.GRAY);
+-                emailField.setFocusable(false);
+-                passwordField.setFont(instructorFont);
+-                passwordField.setBackground(Color.LIGHT_GRAY);
+-                passwordField.setText("123456789");
+-                passwordField.setForeground(Color.GRAY);
+-                passwordField.setFocusable(false);
+-                errorLabel.setText("");
+-            }
+-        });
+-        labelSize = signInLabel.getPreferredSize();
+-        signInLabel.setBounds(360 - (labelSize.width /2), 450, labelSize.width, labelSize.height);
+-
+-        add(usernameLabel);
+-        add(emailLabel);
+-        add(passwordLabel);
+-        add(usernameField);
+-        add(emailField);
+-        add(passwordField);
+-        add(titleLabel);
+-        add(resetButton);
+-        add(signUpButton);
+-        add(errorLabel);
+-        add(signInLabel);
+-    }
+-}
+Index: .idea/vcs.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/vcs.xml b/.idea/vcs.xml
+deleted file mode 100644
+--- a/.idea/vcs.xml	(revision ea38bc1815d6de47f1ef4c62aa0f49df8e04e60c)
++++ /dev/null	(revision ea38bc1815d6de47f1ef4c62aa0f49df8e04e60c)
+@@ -1,6 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<project version="4">
+-  <component name="VcsDirectoryMappings">
+-    <mapping directory="" vcs="Git" />
+-  </component>
+-</project>
+\ No newline at end of file
+Index: .idea/uiDesigner.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/uiDesigner.xml b/.idea/uiDesigner.xml
+deleted file mode 100644
+--- a/.idea/uiDesigner.xml	(revision ea38bc1815d6de47f1ef4c62aa0f49df8e04e60c)
++++ /dev/null	(revision ea38bc1815d6de47f1ef4c62aa0f49df8e04e60c)
+@@ -1,124 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<project version="4">
+-  <component name="Palette2">
+-    <group name="Swing">
+-      <item class="com.intellij.uiDesigner.HSpacer" tooltip-text="Horizontal Spacer" icon="/com/intellij/uiDesigner/icons/hspacer.svg" removable="false" auto-create-binding="false" can-attach-label="false">
+-        <default-constraints vsize-policy="1" hsize-policy="6" anchor="0" fill="1" />
+-      </item>
+-      <item class="com.intellij.uiDesigner.VSpacer" tooltip-text="Vertical Spacer" icon="/com/intellij/uiDesigner/icons/vspacer.svg" removable="false" auto-create-binding="false" can-attach-label="false">
+-        <default-constraints vsize-policy="6" hsize-policy="1" anchor="0" fill="2" />
+-      </item>
+-      <item class="javax.swing.JPanel" icon="/com/intellij/uiDesigner/icons/panel.svg" removable="false" auto-create-binding="false" can-attach-label="false">
+-        <default-constraints vsize-policy="3" hsize-policy="3" anchor="0" fill="3" />
+-      </item>
+-      <item class="javax.swing.JScrollPane" icon="/com/intellij/uiDesigner/icons/scrollPane.svg" removable="false" auto-create-binding="false" can-attach-label="true">
+-        <default-constraints vsize-policy="7" hsize-policy="7" anchor="0" fill="3" />
+-      </item>
+-      <item class="javax.swing.JButton" icon="/com/intellij/uiDesigner/icons/button.svg" removable="false" auto-create-binding="true" can-attach-label="false">
+-        <default-constraints vsize-policy="0" hsize-policy="3" anchor="0" fill="1" />
+-        <initial-values>
+-          <property name="text" value="Button" />
+-        </initial-values>
+-      </item>
+-      <item class="javax.swing.JRadioButton" icon="/com/intellij/uiDesigner/icons/radioButton.svg" removable="false" auto-create-binding="true" can-attach-label="false">
+-        <default-constraints vsize-policy="0" hsize-policy="3" anchor="8" fill="0" />
+-        <initial-values>
+-          <property name="text" value="RadioButton" />
+-        </initial-values>
+-      </item>
+-      <item class="javax.swing.JCheckBox" icon="/com/intellij/uiDesigner/icons/checkBox.svg" removable="false" auto-create-binding="true" can-attach-label="false">
+-        <default-constraints vsize-policy="0" hsize-policy="3" anchor="8" fill="0" />
+-        <initial-values>
+-          <property name="text" value="CheckBox" />
+-        </initial-values>
+-      </item>
+-      <item class="javax.swing.JLabel" icon="/com/intellij/uiDesigner/icons/label.svg" removable="false" auto-create-binding="false" can-attach-label="false">
+-        <default-constraints vsize-policy="0" hsize-policy="0" anchor="8" fill="0" />
+-        <initial-values>
+-          <property name="text" value="Label" />
+-        </initial-values>
+-      </item>
+-      <item class="javax.swing.JTextField" icon="/com/intellij/uiDesigner/icons/textField.svg" removable="false" auto-create-binding="true" can-attach-label="true">
+-        <default-constraints vsize-policy="0" hsize-policy="6" anchor="8" fill="1">
+-          <preferred-size width="150" height="-1" />
+-        </default-constraints>
+-      </item>
+-      <item class="javax.swing.JPasswordField" icon="/com/intellij/uiDesigner/icons/passwordField.svg" removable="false" auto-create-binding="true" can-attach-label="true">
+-        <default-constraints vsize-policy="0" hsize-policy="6" anchor="8" fill="1">
+-          <preferred-size width="150" height="-1" />
+-        </default-constraints>
+-      </item>
+-      <item class="javax.swing.JFormattedTextField" icon="/com/intellij/uiDesigner/icons/formattedTextField.svg" removable="false" auto-create-binding="true" can-attach-label="true">
+-        <default-constraints vsize-policy="0" hsize-policy="6" anchor="8" fill="1">
+-          <preferred-size width="150" height="-1" />
+-        </default-constraints>
+-      </item>
+-      <item class="javax.swing.JTextArea" icon="/com/intellij/uiDesigner/icons/textArea.svg" removable="false" auto-create-binding="true" can-attach-label="true">
+-        <default-constraints vsize-policy="6" hsize-policy="6" anchor="0" fill="3">
+-          <preferred-size width="150" height="50" />
+-        </default-constraints>
+-      </item>
+-      <item class="javax.swing.JTextPane" icon="/com/intellij/uiDesigner/icons/textPane.svg" removable="false" auto-create-binding="true" can-attach-label="true">
+-        <default-constraints vsize-policy="6" hsize-policy="6" anchor="0" fill="3">
+-          <preferred-size width="150" height="50" />
+-        </default-constraints>
+-      </item>
+-      <item class="javax.swing.JEditorPane" icon="/com/intellij/uiDesigner/icons/editorPane.svg" removable="false" auto-create-binding="true" can-attach-label="true">
+-        <default-constraints vsize-policy="6" hsize-policy="6" anchor="0" fill="3">
+-          <preferred-size width="150" height="50" />
+-        </default-constraints>
+-      </item>
+-      <item class="javax.swing.JComboBox" icon="/com/intellij/uiDesigner/icons/comboBox.svg" removable="false" auto-create-binding="true" can-attach-label="true">
+-        <default-constraints vsize-policy="0" hsize-policy="2" anchor="8" fill="1" />
+-      </item>
+-      <item class="javax.swing.JTable" icon="/com/intellij/uiDesigner/icons/table.svg" removable="false" auto-create-binding="true" can-attach-label="false">
+-        <default-constraints vsize-policy="6" hsize-policy="6" anchor="0" fill="3">
+-          <preferred-size width="150" height="50" />
+-        </default-constraints>
+-      </item>
+-      <item class="javax.swing.JList" icon="/com/intellij/uiDesigner/icons/list.svg" removable="false" auto-create-binding="true" can-attach-label="false">
+-        <default-constraints vsize-policy="6" hsize-policy="2" anchor="0" fill="3">
+-          <preferred-size width="150" height="50" />
+-        </default-constraints>
+-      </item>
+-      <item class="javax.swing.JTree" icon="/com/intellij/uiDesigner/icons/tree.svg" removable="false" auto-create-binding="true" can-attach-label="false">
+-        <default-constraints vsize-policy="6" hsize-policy="6" anchor="0" fill="3">
+-          <preferred-size width="150" height="50" />
+-        </default-constraints>
+-      </item>
+-      <item class="javax.swing.JTabbedPane" icon="/com/intellij/uiDesigner/icons/tabbedPane.svg" removable="false" auto-create-binding="true" can-attach-label="false">
+-        <default-constraints vsize-policy="3" hsize-policy="3" anchor="0" fill="3">
+-          <preferred-size width="200" height="200" />
+-        </default-constraints>
+-      </item>
+-      <item class="javax.swing.JSplitPane" icon="/com/intellij/uiDesigner/icons/splitPane.svg" removable="false" auto-create-binding="false" can-attach-label="false">
+-        <default-constraints vsize-policy="3" hsize-policy="3" anchor="0" fill="3">
+-          <preferred-size width="200" height="200" />
+-        </default-constraints>
+-      </item>
+-      <item class="javax.swing.JSpinner" icon="/com/intellij/uiDesigner/icons/spinner.svg" removable="false" auto-create-binding="true" can-attach-label="true">
+-        <default-constraints vsize-policy="0" hsize-policy="6" anchor="8" fill="1" />
+-      </item>
+-      <item class="javax.swing.JSlider" icon="/com/intellij/uiDesigner/icons/slider.svg" removable="false" auto-create-binding="true" can-attach-label="false">
+-        <default-constraints vsize-policy="0" hsize-policy="6" anchor="8" fill="1" />
+-      </item>
+-      <item class="javax.swing.JSeparator" icon="/com/intellij/uiDesigner/icons/separator.svg" removable="false" auto-create-binding="false" can-attach-label="false">
+-        <default-constraints vsize-policy="6" hsize-policy="6" anchor="0" fill="3" />
+-      </item>
+-      <item class="javax.swing.JProgressBar" icon="/com/intellij/uiDesigner/icons/progressbar.svg" removable="false" auto-create-binding="true" can-attach-label="false">
+-        <default-constraints vsize-policy="0" hsize-policy="6" anchor="0" fill="1" />
+-      </item>
+-      <item class="javax.swing.JToolBar" icon="/com/intellij/uiDesigner/icons/toolbar.svg" removable="false" auto-create-binding="false" can-attach-label="false">
+-        <default-constraints vsize-policy="0" hsize-policy="6" anchor="0" fill="1">
+-          <preferred-size width="-1" height="20" />
+-        </default-constraints>
+-      </item>
+-      <item class="javax.swing.JToolBar$Separator" icon="/com/intellij/uiDesigner/icons/toolbarSeparator.svg" removable="false" auto-create-binding="false" can-attach-label="false">
+-        <default-constraints vsize-policy="0" hsize-policy="0" anchor="0" fill="1" />
+-      </item>
+-      <item class="javax.swing.JScrollBar" icon="/com/intellij/uiDesigner/icons/scrollbar.svg" removable="false" auto-create-binding="true" can-attach-label="false">
+-        <default-constraints vsize-policy="6" hsize-policy="0" anchor="0" fill="2" />
+-      </item>
+-    </group>
+-  </component>
+-</project>
+\ No newline at end of file
+Index: MindSpace/src/GUI/WelcomePanel.java
+===================================================================
+diff --git a/MindSpace/src/GUI/WelcomePanel.java b/MindSpace/src/GUI/WelcomePanel.java
+deleted file mode 100644
+--- a/MindSpace/src/GUI/WelcomePanel.java	(revision ea38bc1815d6de47f1ef4c62aa0f49df8e04e60c)
++++ /dev/null	(revision ea38bc1815d6de47f1ef4c62aa0f49df8e04e60c)
+@@ -1,50 +0,0 @@
+-package GUI;
+-
+-import javax.swing.*;
+-import java.awt.*;
+-
+-public class WelcomePanel extends JPanel {
+-    public WelcomePanel(MainFrame mainFrame) {
+-        setLayout(null);
+-
+-        JLabel titleLabel = new JLabel("Welcome", SwingConstants.CENTER);
+-        JLabel titleLabel1 = new JLabel("Time Management", SwingConstants.CENTER);
+-        JLabel messageLabel = new JLabel("Your App To Organize Your Life", SwingConstants.CENTER);
+-        JButton signInButton = new JButton("Sign In");
+-        JButton signUpButton = new JButton("Sign Up");
+-
+-        Font titleFont = new Font(null, Font.BOLD, 48);
+-        Font textFont = new Font(null, Font.PLAIN, 24);
+-        Font inputFont = new Font(null, Font.PLAIN, 16);
+-
+-        Dimension labelSize;
+-
+-        titleLabel.setFont(titleFont);
+-        labelSize = titleLabel.getPreferredSize();
+-        titleLabel.setBounds(360 - (labelSize.width/2), 100, labelSize.width, labelSize.height);
+-
+-        titleLabel1.setFont(titleFont);
+-        labelSize = titleLabel1.getPreferredSize();
+-        titleLabel1.setBounds(360 - (labelSize.width/2), 150, labelSize.width, labelSize.height);
+-
+-        messageLabel.setFont(textFont);
+-        labelSize = messageLabel.getPreferredSize();
+-        messageLabel.setBounds(360 - (labelSize.width/2),220, labelSize.width, labelSize.height);
+-
+-        signInButton.setFont(inputFont);
+-        signInButton.setBounds(240, 400, 100, 30);
+-        signInButton.setFocusable(false);
+-        signInButton.addActionListener(e -> mainFrame.showPage("SignInPage"));
+-
+-        signUpButton.setFont(inputFont);
+-        signUpButton.setBounds(380, 400, 100, 30);
+-        signUpButton.setFocusable(false);
+-        signUpButton.addActionListener(e -> mainFrame.showPage("SignUpPage"));
+-
+-        add(titleLabel);
+-        add(titleLabel1);
+-        add(messageLabel);
+-        add(signInButton);
+-        add(signUpButton);
+-    }
+-}
+Index: MindSpace/src/StartUp/SignUpAbstract.java
+===================================================================
+diff --git a/MindSpace/src/StartUp/SignUpAbstract.java b/MindSpace/src/StartUp/SignUpAbstract.java
+deleted file mode 100644
+--- a/MindSpace/src/StartUp/SignUpAbstract.java	(revision ea38bc1815d6de47f1ef4c62aa0f49df8e04e60c)
++++ /dev/null	(revision ea38bc1815d6de47f1ef4c62aa0f49df8e04e60c)
+@@ -1,42 +0,0 @@
+-package StartUp;
+-
+-public class SignUpAbstract implements SignUpInterface{
+-
+-    /**
+-     * returns: 0 if (empty)
+-     * returns: -1 if (not between 5-15 characters long) or (contain not ahphanumeric character)
+-     * returns: 1 if (accepted)
+-     */
+-    public byte checkUsername(String username){return 0;}
+-
+-
+-    /**
+-     * returns: 0 if (empty)
+-     * returns: -1 if (not contain @, .com)
+-     * returns: 1 if (accepted)
+-     */
+-    public byte checkEmail(String email) {return 0;}
+-
+-
+-    /**
+-     * returns: 0 if (empty)
+-     * returns: -1 if (less than 8 characters long) or (not contain uppercase letter and digit)
+-     * returns: 1 if (accepted)
+-     */
+-    public byte checkPassword(String password) {return 0;}
+-
+-
+-
+-    public byte SignUp(String username, String email, String password) {
+-        byte u = checkUsername(username);
+-        byte e = checkEmail(email);
+-        byte p = checkPassword(password);
+-        if (u == 0) return 10;
+-        else if (e == 0) return 20;
+-        else if (p == 0) return 30;
+-        else if (u == -1) return 9;
+-        else if (e == -1) return 19;
+-        else if (p == -1) return 29;
+-        else return 0;
+-    }
+-}
+Index: MindSpace/src/GUI/Rectangle.java
+===================================================================
+diff --git a/MindSpace/src/GUI/Rectangle.java b/MindSpace/src/GUI/Rectangle.java
+deleted file mode 100644
+--- a/MindSpace/src/GUI/Rectangle.java	(revision ea38bc1815d6de47f1ef4c62aa0f49df8e04e60c)
++++ /dev/null	(revision ea38bc1815d6de47f1ef4c62aa0f49df8e04e60c)
+@@ -1,16 +0,0 @@
+-package GUI;
+-
+-import javax.swing.*;
+-import java.awt.*;
+-
+-public class Rectangle extends JPanel {
+-
+-    @Override
+-    protected void paintComponent(Graphics g) {
+-        super.paintComponent(g);
+-        g.setColor(Color.BLACK);
+-        g.drawRect(50,50,300,300);
+-        g.setColor(Color.RED);
+-        g.fillRect(50,50,100,60);
+-    }
+-}
+Index: MindSpace/.idea/uiDesigner.xml
+===================================================================
+diff --git a/MindSpace/.idea/uiDesigner.xml b/MindSpace/.idea/uiDesigner.xml
+deleted file mode 100644
+--- a/MindSpace/.idea/uiDesigner.xml	(revision ea38bc1815d6de47f1ef4c62aa0f49df8e04e60c)
++++ /dev/null	(revision ea38bc1815d6de47f1ef4c62aa0f49df8e04e60c)
+@@ -1,124 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<project version="4">
+-  <component name="Palette2">
+-    <group name="Swing">
+-      <item class="com.intellij.uiDesigner.HSpacer" tooltip-text="Horizontal Spacer" icon="/com/intellij/uiDesigner/icons/hspacer.svg" removable="false" auto-create-binding="false" can-attach-label="false">
+-        <default-constraints vsize-policy="1" hsize-policy="6" anchor="0" fill="1" />
+-      </item>
+-      <item class="com.intellij.uiDesigner.VSpacer" tooltip-text="Vertical Spacer" icon="/com/intellij/uiDesigner/icons/vspacer.svg" removable="false" auto-create-binding="false" can-attach-label="false">
+-        <default-constraints vsize-policy="6" hsize-policy="1" anchor="0" fill="2" />
+-      </item>
+-      <item class="javax.swing.JPanel" icon="/com/intellij/uiDesigner/icons/panel.svg" removable="false" auto-create-binding="false" can-attach-label="false">
+-        <default-constraints vsize-policy="3" hsize-policy="3" anchor="0" fill="3" />
+-      </item>
+-      <item class="javax.swing.JScrollPane" icon="/com/intellij/uiDesigner/icons/scrollPane.svg" removable="false" auto-create-binding="false" can-attach-label="true">
+-        <default-constraints vsize-policy="7" hsize-policy="7" anchor="0" fill="3" />
+-      </item>
+-      <item class="javax.swing.JButton" icon="/com/intellij/uiDesigner/icons/button.svg" removable="false" auto-create-binding="true" can-attach-label="false">
+-        <default-constraints vsize-policy="0" hsize-policy="3" anchor="0" fill="1" />
+-        <initial-values>
+-          <property name="text" value="Button" />
+-        </initial-values>
+-      </item>
+-      <item class="javax.swing.JRadioButton" icon="/com/intellij/uiDesigner/icons/radioButton.svg" removable="false" auto-create-binding="true" can-attach-label="false">
+-        <default-constraints vsize-policy="0" hsize-policy="3" anchor="8" fill="0" />
+-        <initial-values>
+-          <property name="text" value="RadioButton" />
+-        </initial-values>
+-      </item>
+-      <item class="javax.swing.JCheckBox" icon="/com/intellij/uiDesigner/icons/checkBox.svg" removable="false" auto-create-binding="true" can-attach-label="false">
+-        <default-constraints vsize-policy="0" hsize-policy="3" anchor="8" fill="0" />
+-        <initial-values>
+-          <property name="text" value="CheckBox" />
+-        </initial-values>
+-      </item>
+-      <item class="javax.swing.JLabel" icon="/com/intellij/uiDesigner/icons/label.svg" removable="false" auto-create-binding="false" can-attach-label="false">
+-        <default-constraints vsize-policy="0" hsize-policy="0" anchor="8" fill="0" />
+-        <initial-values>
+-          <property name="text" value="Label" />
+-        </initial-values>
+-      </item>
+-      <item class="javax.swing.JTextField" icon="/com/intellij/uiDesigner/icons/textField.svg" removable="false" auto-create-binding="true" can-attach-label="true">
+-        <default-constraints vsize-policy="0" hsize-policy="6" anchor="8" fill="1">
+-          <preferred-size width="150" height="-1" />
+-        </default-constraints>
+-      </item>
+-      <item class="javax.swing.JPasswordField" icon="/com/intellij/uiDesigner/icons/passwordField.svg" removable="false" auto-create-binding="true" can-attach-label="true">
+-        <default-constraints vsize-policy="0" hsize-policy="6" anchor="8" fill="1">
+-          <preferred-size width="150" height="-1" />
+-        </default-constraints>
+-      </item>
+-      <item class="javax.swing.JFormattedTextField" icon="/com/intellij/uiDesigner/icons/formattedTextField.svg" removable="false" auto-create-binding="true" can-attach-label="true">
+-        <default-constraints vsize-policy="0" hsize-policy="6" anchor="8" fill="1">
+-          <preferred-size width="150" height="-1" />
+-        </default-constraints>
+-      </item>
+-      <item class="javax.swing.JTextArea" icon="/com/intellij/uiDesigner/icons/textArea.svg" removable="false" auto-create-binding="true" can-attach-label="true">
+-        <default-constraints vsize-policy="6" hsize-policy="6" anchor="0" fill="3">
+-          <preferred-size width="150" height="50" />
+-        </default-constraints>
+-      </item>
+-      <item class="javax.swing.JTextPane" icon="/com/intellij/uiDesigner/icons/textPane.svg" removable="false" auto-create-binding="true" can-attach-label="true">
+-        <default-constraints vsize-policy="6" hsize-policy="6" anchor="0" fill="3">
+-          <preferred-size width="150" height="50" />
+-        </default-constraints>
+-      </item>
+-      <item class="javax.swing.JEditorPane" icon="/com/intellij/uiDesigner/icons/editorPane.svg" removable="false" auto-create-binding="true" can-attach-label="true">
+-        <default-constraints vsize-policy="6" hsize-policy="6" anchor="0" fill="3">
+-          <preferred-size width="150" height="50" />
+-        </default-constraints>
+-      </item>
+-      <item class="javax.swing.JComboBox" icon="/com/intellij/uiDesigner/icons/comboBox.svg" removable="false" auto-create-binding="true" can-attach-label="true">
+-        <default-constraints vsize-policy="0" hsize-policy="2" anchor="8" fill="1" />
+-      </item>
+-      <item class="javax.swing.JTable" icon="/com/intellij/uiDesigner/icons/table.svg" removable="false" auto-create-binding="true" can-attach-label="false">
+-        <default-constraints vsize-policy="6" hsize-policy="6" anchor="0" fill="3">
+-          <preferred-size width="150" height="50" />
+-        </default-constraints>
+-      </item>
+-      <item class="javax.swing.JList" icon="/com/intellij/uiDesigner/icons/list.svg" removable="false" auto-create-binding="true" can-attach-label="false">
+-        <default-constraints vsize-policy="6" hsize-policy="2" anchor="0" fill="3">
+-          <preferred-size width="150" height="50" />
+-        </default-constraints>
+-      </item>
+-      <item class="javax.swing.JTree" icon="/com/intellij/uiDesigner/icons/tree.svg" removable="false" auto-create-binding="true" can-attach-label="false">
+-        <default-constraints vsize-policy="6" hsize-policy="6" anchor="0" fill="3">
+-          <preferred-size width="150" height="50" />
+-        </default-constraints>
+-      </item>
+-      <item class="javax.swing.JTabbedPane" icon="/com/intellij/uiDesigner/icons/tabbedPane.svg" removable="false" auto-create-binding="true" can-attach-label="false">
+-        <default-constraints vsize-policy="3" hsize-policy="3" anchor="0" fill="3">
+-          <preferred-size width="200" height="200" />
+-        </default-constraints>
+-      </item>
+-      <item class="javax.swing.JSplitPane" icon="/com/intellij/uiDesigner/icons/splitPane.svg" removable="false" auto-create-binding="false" can-attach-label="false">
+-        <default-constraints vsize-policy="3" hsize-policy="3" anchor="0" fill="3">
+-          <preferred-size width="200" height="200" />
+-        </default-constraints>
+-      </item>
+-      <item class="javax.swing.JSpinner" icon="/com/intellij/uiDesigner/icons/spinner.svg" removable="false" auto-create-binding="true" can-attach-label="true">
+-        <default-constraints vsize-policy="0" hsize-policy="6" anchor="8" fill="1" />
+-      </item>
+-      <item class="javax.swing.JSlider" icon="/com/intellij/uiDesigner/icons/slider.svg" removable="false" auto-create-binding="true" can-attach-label="false">
+-        <default-constraints vsize-policy="0" hsize-policy="6" anchor="8" fill="1" />
+-      </item>
+-      <item class="javax.swing.JSeparator" icon="/com/intellij/uiDesigner/icons/separator.svg" removable="false" auto-create-binding="false" can-attach-label="false">
+-        <default-constraints vsize-policy="6" hsize-policy="6" anchor="0" fill="3" />
+-      </item>
+-      <item class="javax.swing.JProgressBar" icon="/com/intellij/uiDesigner/icons/progressbar.svg" removable="false" auto-create-binding="true" can-attach-label="false">
+-        <default-constraints vsize-policy="0" hsize-policy="6" anchor="0" fill="1" />
+-      </item>
+-      <item class="javax.swing.JToolBar" icon="/com/intellij/uiDesigner/icons/toolbar.svg" removable="false" auto-create-binding="false" can-attach-label="false">
+-        <default-constraints vsize-policy="0" hsize-policy="6" anchor="0" fill="1">
+-          <preferred-size width="-1" height="20" />
+-        </default-constraints>
+-      </item>
+-      <item class="javax.swing.JToolBar$Separator" icon="/com/intellij/uiDesigner/icons/toolbarSeparator.svg" removable="false" auto-create-binding="false" can-attach-label="false">
+-        <default-constraints vsize-policy="0" hsize-policy="0" anchor="0" fill="1" />
+-      </item>
+-      <item class="javax.swing.JScrollBar" icon="/com/intellij/uiDesigner/icons/scrollbar.svg" removable="false" auto-create-binding="true" can-attach-label="false">
+-        <default-constraints vsize-policy="6" hsize-policy="0" anchor="0" fill="2" />
+-      </item>
+-    </group>
+-  </component>
+-</project>
+\ No newline at end of file
+Index: .idea/modules.xml
+===================================================================
+diff --git a/.idea/modules.xml b/.idea/modules.xml
+deleted file mode 100644
+--- a/.idea/modules.xml	(revision ea38bc1815d6de47f1ef4c62aa0f49df8e04e60c)
++++ /dev/null	(revision ea38bc1815d6de47f1ef4c62aa0f49df8e04e60c)
+@@ -1,8 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<project version="4">
+-  <component name="ProjectModuleManager">
+-    <modules>
+-      <module fileurl="file://$PROJECT_DIR$/MindSpace-Time_Management_System.iml" filepath="$PROJECT_DIR$/MindSpace-Time_Management_System.iml" />
+-    </modules>
+-  </component>
+-</project>
+\ No newline at end of file
+Index: MindSpace/.gitignore
+===================================================================
+diff --git a/MindSpace/.gitignore b/MindSpace/.gitignore
+deleted file mode 100644
+--- a/MindSpace/.gitignore	(revision ea38bc1815d6de47f1ef4c62aa0f49df8e04e60c)
++++ /dev/null	(revision ea38bc1815d6de47f1ef4c62aa0f49df8e04e60c)
+@@ -1,29 +0,0 @@
+-### IntelliJ IDEA ###
+-out/
+-!**/src/main/**/out/
+-!**/src/test/**/out/
+-
+-### Eclipse ###
+-.apt_generated
+-.classpath
+-.factorypath
+-.project
+-.settings
+-.springBeans
+-.sts4-cache
+-bin/
+-!**/src/main/**/bin/
+-!**/src/test/**/bin/
+-
+-### NetBeans ###
+-/nbproject/private/
+-/nbbuild/
+-/dist/
+-/nbdist/
+-/.nb-gradle/
+-
+-### VS Code ###
+-.vscode/
+-
+-### Mac OS ###
+-.DS_Store
+\ No newline at end of file
+Index: MindSpace/src/GUI/SignInPanel.java
+===================================================================
+diff --git a/MindSpace/src/GUI/SignInPanel.java b/MindSpace/src/GUI/SignInPanel.java
+deleted file mode 100644
+--- a/MindSpace/src/GUI/SignInPanel.java	(revision ea38bc1815d6de47f1ef4c62aa0f49df8e04e60c)
++++ /dev/null	(revision ea38bc1815d6de47f1ef4c62aa0f49df8e04e60c)
+@@ -1,125 +0,0 @@
+-package GUI;
+-
+-import javax.swing.*;
+-import java.awt.*;
+-import java.awt.event.MouseAdapter;
+-import java.awt.event.MouseEvent;
+-
+-import StartUp.SignIn;
+-
+-public class SignInPanel extends JPanel {
+-    public SignInPanel(MainFrame mainFrame) {
+-        setLayout(null);
+-
+-        JButton signInButton = new JButton("Sign In");
+-        JButton resetButton = new JButton("Reset");
+-        JTextField emailField = new JTextField();
+-        JPasswordField passwordField = new JPasswordField();
+-        JLabel emailLabel = new JLabel("Email:");
+-        JLabel passwordLabel = new JLabel("Password:");
+-        JLabel titleLabel = new JLabel("Sign In");
+-        JLabel errorLabel = new JLabel("");
+-        JLabel signUpLabel = new JLabel("<html><u>Don't have email yet? Create new one.</u></html>");
+-
+-        Font titleFont = new Font(null, Font.BOLD, 48);
+-        Font textFont = new Font(null, Font.PLAIN, 24);
+-        Font inputFont = new Font(null, Font.PLAIN, 16);
+-        Font errorFont = new Font(null, Font.BOLD, 12);
+-        Font linkFont = new Font(null, Font.PLAIN, 12);
+-
+-        Dimension labelSize;
+-        int x;
+-
+-        titleLabel.setFont(titleFont);
+-        labelSize = titleLabel.getPreferredSize();
+-        titleLabel.setBounds(360 - (labelSize.width/2), 150, labelSize.width, labelSize.height);
+-
+-        passwordLabel.setFont(textFont);
+-        labelSize = passwordLabel.getPreferredSize();
+-        x = 360 - ((labelSize.width + 20 + 220) / 2);
+-        passwordLabel.setBounds(x , 320, labelSize.width, labelSize.height);
+-
+-        emailLabel.setFont(textFont);
+-        labelSize = emailLabel.getPreferredSize();
+-        emailLabel.setBounds(x, 250, labelSize.width, labelSize.height);
+-
+-        passwordField.setFont(inputFont);
+-        passwordField.setBounds(x + (passwordLabel.getWidth() + 20), 322, 220, 32);
+-
+-        emailField.setFont(inputFont);
+-        emailField.setBounds(passwordField.getX(), 252, 220, 32);
+-
+-        errorLabel.setFont(errorFont);
+-        errorLabel.setBounds(passwordField.getX(), 270, 220, 50);
+-        errorLabel.setForeground(Color.red);
+-
+-        signInButton.setFont(inputFont);
+-        signInButton.setBounds(240, 390, 100, 30);
+-        signInButton.setFocusable(false);
+-        signInButton.addActionListener(e -> {
+-            if (e.getSource() == signInButton) {
+-                String Email = emailField.getText().toLowerCase();
+-                String Password = String.valueOf(passwordField.getPassword());
+-
+-                switch (SignIn.logIn(Email, Password)) {
+-                    case 10:
+-                        errorLabel.setLocation(errorLabel.getX(), 270);
+-                        errorLabel.setText("* Email must not be Empty");
+-                        break;
+-                    case 20:
+-                        errorLabel.setText("* Password must not be Empty");
+-                        errorLabel.setLocation(errorLabel.getX(), 340);
+-                        break;
+-                    case 9:
+-                        errorLabel.setLocation(errorLabel.getX(), 270);
+-                        errorLabel.setText("* Wrong Email");
+-                        break;
+-                    case 19:
+-                        errorLabel.setLocation(errorLabel.getX(), 340);
+-                        errorLabel.setText("* Wrong Password");
+-                        break;
+-                    default:
+-                        errorLabel.setText("");
+-                        System.out.println("Well Done");
+-                }
+-            }
+-        });
+-
+-
+-        resetButton.setFont(inputFont);
+-        resetButton.setBounds(380, 390, 100, 30);
+-        resetButton.setFocusable(false);
+-        resetButton.addActionListener(e -> {
+-            if (e.getSource() == resetButton) {
+-                emailField.setText("");
+-                passwordField.setText("");
+-                errorLabel.setText("");
+-            }
+-        });
+-
+-        signUpLabel.setFont(linkFont);
+-        signUpLabel.setForeground(new Color(0,107,255));
+-        signUpLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
+-        signUpLabel.addMouseListener(new MouseAdapter() {
+-            @Override
+-            public void mouseClicked(MouseEvent e) {
+-                mainFrame.showPage("SignUpPage");
+-                emailField.setText("");
+-                passwordField.setText("");
+-                errorLabel.setText("");
+-            }
+-        });
+-        labelSize = signUpLabel.getPreferredSize();
+-        signUpLabel.setBounds(360 - (labelSize.width/ 2) , 430, labelSize.width, labelSize.height);
+-
+-        add(emailLabel);
+-        add(passwordLabel);
+-        add(emailField);
+-        add(passwordField);
+-        add(titleLabel);
+-        add(signInButton);
+-        add(resetButton);
+-        add(errorLabel);
+-        add(signUpLabel);
+-    }
+-}
