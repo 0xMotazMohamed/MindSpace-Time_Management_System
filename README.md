@@ -13,7 +13,7 @@
 ## **Overview**  
 <img src="https://github.com/0xMotazMohamed/MindSpace-Time_Management_System/blob/main/Logo.jpg?raw=true" alt="MindSpace Logo" width="200" height="200">
 
-MindSpace is a **time management system** designed to enhance productivity by helping users **plan, track, and complete their tasks efficiently**. It provides an intuitive interface for **task scheduling, time tracking, and automated reminders**, making it easier to stay focused and organized.  
+MindSpace is a **time management system** designed to enhance productivity by helping users **plan, track, and complete their tasks efficiently**. It provides an intuitive interface for **time tracking, and automated reminders**, making it easier to stay focused and organized.  
 
 Unlike conventional task management tools, MindSpace is **lightweight, user-friendly, and efficient**, offering:  
 ✔️ **Task prioritization and sorting**  
@@ -24,7 +24,7 @@ Unlike conventional task management tools, MindSpace is **lightweight, user-frie
 ---
 
 ## **Features**  
-- ✅ **Task Scheduling:** Create, edit, and manage tasks with priority levels.
+- ✅ **Project Creating:** Create, edit, and manage tasks with priority levels.
 
 <img src="https://github.com/0xMotazMohamed/MindSpace-Time_Management_System/blob/main/Project%20Creation.jpg?raw=true" alt="MindSpace Project Creation" width="250" height="250">
 
@@ -40,12 +40,12 @@ Unlike conventional task management tools, MindSpace is **lightweight, user-frie
 ## **Usage**  
 Once installed, users can:
 
-Create Tasks – Add tasks with deadlines and priorities.
+Create Tasks – Add tasks with priorities.
 Track Time – Use the Pomodoro timer to stay focused.
 Receive Reminders – Get notified before task deadlines.
 Monitor Progress – View task statistics on the dashboard.
 Users can:
-✔️ Add new tasks with a title, description, deadline, and priority.
+✔️ Add new tasks with a title, description, and priority.
 ✔️ Edit tasks to update details.
 ✔️ Delete completed or unnecessary tasks.
 ✔️ Sort tasks by priority or due date.
