@@ -10,7 +10,12 @@
 
 ---
 
+
+
+
+
 ## **Overview**  
+![MindSpace Logo]([images/logo.png](https://github.com/0xMotazMohamed/MindSpace-Time_Management_System/blob/main/Logo.jpg?raw=true))
 MindSpace is a **time management system** designed to enhance productivity by helping users **plan, track, and complete their tasks efficiently**. It provides an intuitive interface for **task scheduling, time tracking, and automated reminders**, making it easier to stay focused and organized.  
 
 Unlike conventional task management tools, MindSpace is **lightweight, user-friendly, and efficient**, offering:  
