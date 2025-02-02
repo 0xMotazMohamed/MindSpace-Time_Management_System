@@ -4,12 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="53b98d1d-46f6-4149-99dc-d0828fbc947e" name="Changes" comment="1/27 8:53">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_25_2025_10_20_AM_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_25_2025_10_20_AM__Changes_.xml" beforeDir="false" />
+    <list default="true" id="53b98d1d-46f6-4149-99dc-d0828fbc947e" name="Changes" comment="GitHub token removed">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MindSpace.exe" beforeDir="false" afterPath="$PROJECT_DIR$/Mind Space.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,12 +16,9 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="ROOT_SYNC" value="DONT_SYNC" />
   </component>
-  <component name="GitHubPullRequestSearchHistory">{
-  &quot;lastFilter&quot;: {
-    &quot;state&quot;: &quot;OPEN&quot;,
-    &quot;assignee&quot;: &quot;AbdullahMostafa24&quot;
-  }
-}</component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {}
+}]]></component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/0xMotazMohamed/MindSpace-Time_Management_System.git&quot;,
@@ -114,7 +107,7 @@
       <workItem from="1738003386877" duration="507000" />
       <workItem from="1738003967172" duration="62000" />
       <workItem from="1738235666075" duration="319000" />
-      <workItem from="1738488386571" duration="402000" />
+      <workItem from="1738488386571" duration="1359000" />
     </task>
     <task id="LOCAL-00001" summary="1/25 10:23">
       <option name="closed" value="true" />
@@ -172,7 +165,15 @@
       <option name="project" value="LOCAL" />
       <updated>1738003998967</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="GitHub token removed">
+      <option name="closed" value="true" />
+      <created>1738488835393</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1738488835393</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -185,6 +186,7 @@
     <MESSAGE value="1/27 7:56" />
     <MESSAGE value="1/27 8:49" />
     <MESSAGE value="1/27 8:53" />
-    <option name="LAST_COMMIT_MESSAGE" value="1/27 8:53" />
+    <MESSAGE value="GitHub token removed" />
+    <option name="LAST_COMMIT_MESSAGE" value="GitHub token removed" />
   </component>
 </project>
