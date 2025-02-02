@@ -3,7 +3,8 @@
 ## **Contents**  
 - [Overview](#overview)  
 - [Features](#features)  
-- [Usage](#usage)  
+- [Usage](#usage)
+- [Download](#download)   
 - [Team](#team)  
 ---
 
@@ -43,14 +44,19 @@ Create Tasks – Add tasks with deadlines and priorities.
 Track Time – Use the Pomodoro timer to stay focused.
 Receive Reminders – Get notified before task deadlines.
 Monitor Progress – View task statistics on the dashboard.
-## **Task Management**  
-MindSpace’s task management system enables users to efficiently handle tasks using priority-based sorting algorithms.
-
 Users can:
 ✔️ Add new tasks with a title, description, deadline, and priority.
 ✔️ Edit tasks to update details.
 ✔️ Delete completed or unnecessary tasks.
 ✔️ Sort tasks by priority or due date.
+
+## **Download**
+
+You can download the executable for the **MindSpace Time Management System** below:
+
+[Download Mind Space.exe](https://github.com/0xMotazMohamed/MindSpace-Time_Management_System/blob/6d1149495609e2a1c6afb18e7fccc56453a107d7/Mind%20Space.exe)
+
+make sure you have the Java Runtime Environment (JRE) installed.
 
 ## **Team**  
 - **[MotazMohamed](https://github.com/0xMotazMohamed)** – BackEnd Developer  
