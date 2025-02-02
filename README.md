@@ -59,8 +59,8 @@ You can download the executable for the **MindSpace Time Management System** bel
 make sure you have the Java Runtime Environment (JRE) installed.
 
 ## **Team**  
-- **[MotazMohamed](https://github.com/0xMotazMohamed)** – BackEnd Developer  
-- **[AbdullaMostafa](https://github.com/AbdullahMostafa24)** – UI Designer  
-- **[YousefWahba](https://github.com/yousefiwahba)** – Features Creator  
+- **[Motaz Mohamed](https://github.com/0xMotazMohamed)** – BackEnd Developer  
+- **[Abdulla Mostafa](https://github.com/AbdullahMostafa24)** – UI Designer  
+- **[Yousef Wahba](https://github.com/yousefiwahba)** – Features Creator  
 
 
